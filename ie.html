@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ireland&#x27;s Cosiest Towns and Villages | Liquidline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red:#e30613; --black:#000604; --grey:#cac7c7; --muted:#5f5b5b; --track:#f2f1f1; --soft:#f7f6f6; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Poppins, Arial, sans-serif; color:var(--black); background:#fff; padding:16px; -webkit-font-smoothing:antialiased; }
+  .top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .tabs { display:inline-flex; gap:4px; padding:4px; border:1px solid var(--grey); border-radius:999px; }
+  .tabs button { font:500 14px Poppins, Arial, sans-serif; padding:6px 18px; border:0; border-radius:999px; background:none; cursor:pointer; color:var(--black); }
+  .tabs button[aria-pressed="true"] { background:var(--black); color:#fff; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; }
+  select { font:13px Poppins, Arial, sans-serif; padding:6px 28px 6px 12px; border:1px solid var(--grey); border-radius:999px; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23000604' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center; -webkit-appearance:none; appearance:none; color:var(--black); cursor:pointer; min-width:150px; max-width:100%; }
+  select:focus { outline:none; border-color:var(--black); }
+  .search { flex:1 1 180px; max-width:260px; position:relative; }
+  .search input { width:100%; font:14px Poppins, Arial, sans-serif; padding:8px 12px 8px 34px; border:1px solid var(--grey); border-radius:999px; outline:none; }
+  .search input:focus { border-color:var(--black); }
+  .search svg { position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--muted); }
+  h1 { font-family:Merriweather, Georgia, serif; font-size:clamp(19px,4vw,24px); font-weight:700; line-height:1.25; }
+  .sub { font-size:13.5px; color:var(--muted); margin:3px 0 10px; }
+  .layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:22px; align-items:start; }
+  ol { list-style:none; min-height:calc(10 * 44.5px); }
+  .row { width:100%; display:grid; grid-template-columns:30px minmax(120px,38%) 1fr 38px; align-items:center; column-gap:10px;
+         padding:6px 6px 6px 2px; border:0; border-radius:6px; background:none; cursor:pointer; text-align:left; font:inherit; color:inherit; }
+  .row:hover { background:var(--soft); }
+  .row[aria-current="true"] { background:var(--soft); box-shadow:inset 3px 0 0 var(--black); }
+  .row:focus-visible { outline:2px solid var(--red); outline-offset:-2px; }
+  li + li { margin-top:1px; }
+  .rank { font-size:13.5px; font-weight:500; color:var(--muted); text-align:right; }
+  .name { display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+  .name strong { font-size:14.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .area { font-size:11.5px; color:var(--muted); }
+  .track { height:8px; background:var(--track); border-radius:0 4px 4px 0; }
+  .bar { display:block; height:100%; background:var(--grey); border-radius:0 4px 4px 0; }
+  .intro .bar { animation:grow .7s ease-out both; }
+  @keyframes grow { from { width:0; } }
+  @media (prefers-reduced-motion: reduce) { .intro .bar { animation:none; } }
+  .score { font-size:14px; font-weight:700; text-align:right; }
+  .win .bar { background:var(--red); } .win .rank, .win .name strong { color:var(--red); font-weight:700; }
+  .row.win { background:rgba(227,6,19,.05); }
+  .row.win[aria-current="true"] { background:rgba(227,6,19,.08); }
+  .tag { display:inline-block; font-size:10.5px; font-weight:700; color:var(--red); border:1px solid var(--red); border-radius:999px; padding:0 6px; margin-left:6px; vertical-align:2px; letter-spacing:.02em; }
+  .pager { display:flex; align-items:center; justify-content:space-between; margin-top:10px; font-size:13px; }
+  .pager button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--grey); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .pager button:disabled { opacity:.35; cursor:default; }
+  .pager span { color:var(--muted); }
+  .empty { font-size:14px; color:var(--muted); padding:20px 4px; }
+  .card { background:var(--soft); border-radius:12px; padding:18px; }
+  .card .kicker { font-size:12px; font-weight:500; color:var(--muted); }
+  .card h2 { font-family:Merriweather, Georgia, serif; font-size:22px; font-weight:700; line-height:1.25; margin-top:2px; }
+  .card .big { display:flex; align-items:baseline; gap:6px; margin-top:6px; }
+  .card .big b { font-size:34px; font-weight:700; color:var(--red); line-height:1; }
+  .card .big span { font-size:13px; color:var(--muted); }
+  blockquote + blockquote { margin-top:10px; }
+  .quotes { margin-top:16px; background:rgba(227,6,19,.05); border-radius:10px; padding:12px 14px; }
+  blockquote { font-family:Merriweather, Georgia, serif; font-style:italic; font-size:16.5px; line-height:1.5; }
+  .who { font-size:12px; color:var(--muted); margin-top:6px; }
+  .stats { list-style:none; margin-top:16px; }
+  .stats li { font-size:14px; line-height:1.45; padding-left:16px; position:relative; }
+  .stats li + li { margin-top:8px; }
+  .stats li::before { content:""; position:absolute; left:1px; top:.55em; width:7px; height:7px; border-radius:50%; background:var(--red); }
+  .close { display:none; position:absolute; top:8px; right:10px; width:34px; height:34px; border:0; border-radius:50%; background:#fff; font-size:22px; line-height:1; cursor:pointer; color:var(--black); }
+  .layout { position:relative; }
+  .tools { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tools button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--black); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .tools button:hover { background:var(--soft); }
+  .status { font-size:12px; color:var(--muted); align-self:center; }
+  .embed { display:none; position:absolute; left:0; right:0; bottom:0; z-index:6; background:#fff; border:1px solid var(--grey); border-radius:12px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+  .embed.open { display:block; }
+  .embed p { font-size:13px; margin-bottom:8px; }
+  .embed textarea { width:100%; height:120px; font:12px/1.4 ui-monospace, Menlo, Consolas, monospace; border:1px solid var(--grey); border-radius:8px; padding:8px; resize:none; }
+  .embed .row2 { display:flex; gap:8px; margin-top:8px; }
+  .embed .row2 button { font:500 13px Poppins, Arial, sans-serif; background:none; border:0; border-bottom:1px solid var(--black); padding:0 0 1px; cursor:pointer; color:var(--black); }
+  .shot { position:absolute; left:-12000px; top:0; width:800px; background:#fff; padding:32px; }
+  .shot h1 { font-size:30px; } .shot .sub { font-size:15px; margin-bottom:16px; }
+  .shot .srow { display:grid; grid-template-columns:34px 260px 1fr 56px; align-items:center; column-gap:14px; padding:7px 0; border-top:1px solid #eeeded; }
+  .shot .srow .rank, .shot .srow .score { font-size:16px; } .shot .srow strong { font-size:17px; font-weight:500; } .shot .srow .area { font-size:13px; }
+  .shot .srow .track { height:10px; } .shot .win { background:rgba(227,6,19,.05); }
+  .shot .sfoot { font-size:13px; color:var(--muted); margin-top:16px; }
+  .shot .sfoot b { color:var(--black); }
+  .foot { font-size:12px; color:var(--muted); margin-top:14px; }
+  .foot b { color:var(--black); font-weight:500; }
+  .foot a.src { color:inherit; }
+  @media (max-width:700px) { .layout { grid-template-columns:1fr; }
+    .card { display:none; position:absolute; left:0; right:0; z-index:5; padding-top:20px; box-shadow:0 10px 30px rgba(0,0,0,.18); background:#fff; border:1px solid var(--grey); }
+    .card.open { display:block; } .close { display:block; } .card .kicker { padding-right:34px; } .search { max-width:none; } .filters { width:100%; } .filters select { flex:1 1 0; min-width:0; } }
+  @media (max-width:480px) { .filters select { flex:1 1 100%; } }
+  @media (max-width:420px) { .row { grid-template-columns:24px minmax(110px,44%) 1fr 34px; column-gap:8px; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs" role="group" aria-label="Choose towns or villages">
+      <button type="button" data-k="town" aria-pressed="true">Towns</button>
+      <button type="button" data-k="village" aria-pressed="false">Villages</button>
+    </div>
+    <div class="filters">
+      <select id="nation" aria-label="Choose a province"></select>
+      <select id="area" aria-label="Choose an area"></select>
+    </div>
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" placeholder="Find a town or village" aria-label="Find a town or village" autocomplete="off"></label>
+  </div>
+  <div class="layout">
+    <div>
+      <h1 id="title"></h1>
+      <p class="sub" id="sub"></p>
+      <ol id="list"></ol>
+      <div class="pager"><button type="button" id="prev">‹ Previous</button><span id="pageinfo"></span><button type="button" id="next">Next ›</button></div>
+    </div>
+    <aside class="card" id="card" aria-live="polite"></aside>
+    <div class="embed" id="embedBox" role="dialog" aria-label="Embed this chart"><p>Copy this code and paste it into your page. It opens on the view you&#x27;re looking at now.</p><textarea id="embedCode" readonly></textarea>
+      <div class="row2"><button type="button" class="more" id="copyBtn">Copy code</button><button type="button" class="more" id="embedClose">Close</button></div></div>
+  </div>
+  <div class="tools" data-no-capture><button type="button" id="embedBtn" aria-expanded="false">Embed this chart</button><button type="button" id="dlBtn">Download image</button><span class="status" id="status" role="status"></span></div>
+  <p class="foot">How we scored: visitor reviews, cafés and tea rooms, places to stay, historic buildings and press round-ups.</p>
+  <p class="foot">Source: <a class="src" href="https://liquidline.ie/news/cosiest-towns/" target="_blank" rel="noopener"><b>Liquidline</b></a>, cosiest towns and villages study, November 2026. Full study: <a style="white-space:nowrap" class="src" href="https://liquidline.ie/news/cosiest-towns/" target="_blank" rel="noopener">liquidline.ie/news/cosiest-towns/</a></p>
+  <noscript><p class="foot">Turn on JavaScript to explore every place.</p></noscript>
+<script>
+(function(){
+  var D = [{"k":"town","r":1,"n":"Dingle","c":"Kerry","s":88.8,"na":"Munster","nr":1,"cr":1,"q":["Cozy vibe, friendly staff, and a perfect stop to recharge while wandering around town.","Such a pleasant surprise to find a cosy and bright café."],"st":["Ireland's cosiest town.","More cafés and tea rooms per person than any other town in the study.","The cosiest reviews of any town in the study. Half of its reviews use words like cosy, snug or warm.","Named in 17 press round-ups of the prettiest and cosiest places."]},{"k":"town","r":2,"n":"Clonakilty","c":"Cork","s":81.2,"na":"Munster","nr":2,"cr":1,"q":["It's small but that made it more cozy.","Crammed full of character and characters!"],"st":["The second cosiest reviews of any town in the study. Half of its reviews use words like cosy, snug or warm.","Twice as many cafés and tea rooms per person as the typical town in the study.","173 historic buildings within a short walk of the centre."]},{"k":"town","r":3,"n":"Kenmare","c":"Kerry","s":77.4,"na":"Munster","nr":3,"cr":2,"q":["A cosy winters evening."],"st":["Three times as many cafés and tea rooms per person as the typical town in the study.","Over 3 in 10 of its reviews use words like cosy, snug or warm.","Named in 9 press round-ups of the prettiest and cosiest places."]},{"k":"town","r":4,"n":"Kilkenny","c":"Kilkenny","s":76.6,"na":"Leinster","nr":1,"cr":1,"q":["Wonderfully warm and inviting place.","The beauty, charm, and warmth of this lovely property."],"st":["Leinster's cosiest town.","More historic buildings near the centre than 9 in 10 towns in the study.","35 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":5,"n":"Sligo","c":"Sligo","s":72.5,"na":"Connacht","nr":1,"cr":1,"q":["It's narrow and long with a warm fireplace in the back.","Full of character, with old furniture and odd corners."],"st":["Connacht's cosiest town.","More historic buildings near the centre than 9 in 10 towns in the study.","Nearly 4 in 10 of its reviews use words like cosy, snug or warm.","16 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":6,"n":"Kinsale","c":"Cork","s":72.2,"na":"Munster","nr":4,"cr":2,"q":["It's a warm, welcoming place with a cozy, lived-in charm.","Place was quiet and cosy with a few locals in."],"st":["Named in more round-ups of the prettiest and cosiest places than any other town.","Twice as many cafés and tea rooms per person as the typical town in the study.","164 historic buildings within a short walk of the centre."]},{"k":"town","r":7,"n":"Westport","c":"Mayo","s":71.6,"na":"Connacht","nr":2,"cr":1,"q":["The atmosphere is incredibly cozy and warm."],"st":["Named in 17 press round-ups of the prettiest and cosiest places.","9 independent cafés and tea rooms within a short walk of the centre.","3 in 10 of its reviews use words like cosy, snug or warm.","194 historic buildings within a short walk of the centre."]},{"k":"town","r":8,"n":"Athlone","c":"Westmeath","s":68.3,"na":"Leinster","nr":2,"cr":null,"q":["Cosy little cafe close to the Castle.","Warm, welcoming atmosphere and genuinely delicious food."],"st":["The third cosiest reviews of any town in the study. Nearly half of its reviews use words like cosy, snug or warm.","22 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":9,"n":"Clifden","c":"Galway","s":67.6,"na":"Connacht","nr":3,"cr":1,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical town in the study.","4 in 10 of its reviews use words like cosy, snug or warm."]},{"k":"town","r":10,"n":"Wexford","c":"Wexford","s":67.3,"na":"Leinster","nr":3,"cr":1,"q":["Found it very cosy and a great atmosphere.","We were given a warm welcome."],"st":["More historic buildings near the centre than 9 in 10 towns in the study.","26 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":11,"n":"Letterkenny","c":"Donegal","s":65.9,"na":"Ulster","nr":1,"cr":1,"q":[],"st":["Ulster's cosiest town (Cavan, Donegal and Monaghan).","Over 4 in 10 of its reviews use words like cosy, snug or warm.","12 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":12,"n":"New Ross","c":"Wexford","s":65.7,"na":"Leinster","nr":4,"cr":2,"q":[],"st":["More historic buildings near the centre than 9 in 10 towns in the study.","11 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":13,"n":"Lahinch","c":"Clare","s":65.2,"na":"Munster","nr":5,"cr":1,"q":[],"st":["Five times as many cafés and tea rooms per person as the typical town in the study."]},{"k":"town","r":14,"n":"Graiguenamanagh","c":"Kilkenny","s":61.5,"na":"Leinster","nr":5,"cr":2,"q":[],"st":["Nearly 4 in 10 of its reviews use words like cosy, snug or warm."]},{"k":"town","r":15,"n":"Killarney","c":"Kerry","s":61.3,"na":"Munster","nr":6,"cr":3,"q":[],"st":["25 independent cafés and tea rooms within a short walk of the centre.","Named in 8 press round-ups of the prettiest and cosiest places."]},{"k":"town","r":16,"n":"Ennis","c":"Clare","s":58.3,"na":"Munster","nr":7,"cr":2,"q":[],"st":["22 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":17,"n":"Donegal Town","c":"Donegal","s":56.3,"na":"Ulster","nr":2,"cr":2,"q":[],"st":["Over 3 in 10 of its reviews use words like cosy, snug or warm."]},{"k":"town","r":18,"n":"Enniscorthy","c":"Wexford","s":55.9,"na":"Leinster","nr":6,"cr":3,"q":[],"st":["8 independent cafés and tea rooms within a short walk of the centre.","254 historic buildings within a short walk of the centre."]},{"k":"town","r":19,"n":"Greystones","c":"Wicklow","s":54.8,"na":"Leinster","nr":7,"cr":1,"q":[],"st":["13 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":20,"n":"Cahersiveen","c":"Kerry","s":54.3,"na":"Munster","nr":8,"cr":4,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical town in the study."]},{"k":"town","r":21,"n":"Oughterard","c":"Galway","s":53.2,"na":"Connacht","nr":4,"cr":2,"q":[],"st":[]},{"k":"town","r":22,"n":"Carlingford","c":"Louth","s":52.8,"na":"Leinster","nr":8,"cr":1,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical town in the study.","Named in 13 press round-ups of the prettiest and cosiest places."]},{"k":"town","r":23,"n":"Bundoran","c":"Donegal","s":52.6,"na":"Ulster","nr":3,"cr":3,"q":[],"st":[]},{"k":"town","r":24,"n":"Killorglin","c":"Kerry","s":51.7,"na":"Munster","nr":9,"cr":5,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical town in the study."]},{"k":"town","r":25,"n":"Adare","c":"Limerick","s":51.4,"na":"Munster","nr":10,"cr":1,"q":[],"st":["Named in 15 press round-ups of the prettiest and cosiest places."]},{"k":"town","r":26,"n":"Carrick-on-Shannon","c":"Leitrim","s":51.0,"na":"Connacht","nr":5,"cr":null,"q":[],"st":["7 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":27,"n":"Enniskerry","c":"Wicklow","s":50.3,"na":"Leinster","nr":9,"cr":2,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical town in the study."]},{"k":"town","r":28,"n":"Tralee","c":"Kerry","s":49.8,"na":"Munster","nr":11,"cr":6,"q":[],"st":["11 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":29,"n":"Dungarvan","c":"Waterford","s":49.2,"na":"Munster","nr":12,"cr":1,"q":[],"st":["8 independent cafés and tea rooms within a short walk of the centre.","171 historic buildings within a short walk of the centre."]},{"k":"town","r":30,"n":"Lismore","c":"Waterford","s":49.1,"na":"Munster","nr":13,"cr":2,"q":[],"st":["Three times as many cafés and tea rooms per person as the typical town in the study.","216 historic buildings within a short walk of the centre."]},{"k":"town","r":30,"n":"Youghal","c":"Cork","s":49.1,"na":"Munster","nr":13,"cr":3,"q":[],"st":["6 independent cafés and tea rooms within a short walk of the centre.","197 historic buildings within a short walk of the centre."]},{"k":"town","r":32,"n":"Bantry","c":"Cork","s":48.7,"na":"Munster","nr":15,"cr":4,"q":[],"st":["Three times as many cafés and tea rooms per person as the typical town in the study."]},{"k":"town","r":33,"n":"Cobh","c":"Cork","s":48.6,"na":"Munster","nr":16,"cr":5,"q":[],"st":["8 independent cafés and tea rooms within a short walk of the centre.","264 historic buildings within a short walk of the centre."]},{"k":"town","r":34,"n":"Birr","c":"Offaly","s":45.4,"na":"Leinster","nr":10,"cr":1,"q":[],"st":["286 historic buildings within a short walk of the centre."]},{"k":"town","r":34,"n":"Cahir","c":"Tipperary","s":45.4,"na":"Munster","nr":17,"cr":1,"q":[],"st":[]},{"k":"town","r":36,"n":"Abbeyleix","c":"Laois","s":45.1,"na":"Leinster","nr":11,"cr":null,"q":[],"st":[]},{"k":"town","r":37,"n":"Dunmore East","c":"Waterford","s":44.4,"na":"Munster","nr":18,"cr":3,"q":[],"st":[]},{"k":"town","r":38,"n":"Gorey","c":"Wexford","s":44.1,"na":"Leinster","nr":12,"cr":4,"q":[],"st":["11 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":39,"n":"Cashel","c":"Tipperary","s":43.8,"na":"Munster","nr":19,"cr":2,"q":[],"st":["7 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":40,"n":"Dungloe","c":"Donegal","s":42.7,"na":"Ulster","nr":4,"cr":4,"q":[],"st":[]},{"k":"town","r":41,"n":"Tramore","c":"Waterford","s":41.2,"na":"Munster","nr":20,"cr":4,"q":[],"st":["9 independent cafés and tea rooms within a short walk of the centre.","199 historic buildings within a short walk of the centre."]},{"k":"town","r":42,"n":"Bray","c":"Wicklow","s":39.5,"na":"Leinster","nr":13,"cr":3,"q":[],"st":["18 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":43,"n":"Rathdrum","c":"Wicklow","s":38.0,"na":"Leinster","nr":14,"cr":4,"q":[],"st":[]},{"k":"town","r":44,"n":"Strandhill","c":"Sligo","s":37.4,"na":"Connacht","nr":6,"cr":2,"q":[],"st":[]},{"k":"town","r":45,"n":"Belmullet","c":"Mayo","s":37.3,"na":"Connacht","nr":7,"cr":2,"q":[],"st":[]},{"k":"town","r":46,"n":"Trim","c":"Meath","s":37.2,"na":"Leinster","nr":15,"cr":1,"q":[],"st":["8 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":47,"n":"Cavan","c":"Cavan","s":35.0,"na":"Ulster","nr":5,"cr":null,"q":[],"st":["11 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":48,"n":"Kildare","c":"Kildare","s":34.8,"na":"Leinster","nr":16,"cr":null,"q":[],"st":[]},{"k":"town","r":49,"n":"Bunclody","c":"Wexford","s":34.0,"na":"Leinster","nr":17,"cr":5,"q":[],"st":[]},{"k":"town","r":50,"n":"Banagher","c":"Offaly","s":31.6,"na":"Leinster","nr":18,"cr":2,"q":[],"st":[]},{"k":"town","r":51,"n":"Castleconnell","c":"Limerick","s":30.3,"na":"Munster","nr":21,"cr":2,"q":[],"st":[]},{"k":"town","r":51,"n":"Clonbur","c":"Galway","s":30.3,"na":"Connacht","nr":8,"cr":3,"q":[],"st":[]},{"k":"town","r":53,"n":"Slane","c":"Meath","s":29.9,"na":"Leinster","nr":19,"cr":2,"q":[],"st":[]},{"k":"town","r":54,"n":"Aughrim","c":"Wicklow","s":29.6,"na":"Leinster","nr":20,"cr":5,"q":[],"st":[]},{"k":"town","r":55,"n":"Blackrock (Co Louth)","c":"Louth","s":29.1,"na":"Leinster","nr":21,"cr":2,"q":[],"st":[]},{"k":"town","r":56,"n":"Ramelton","c":"Donegal","s":28.0,"na":"Ulster","nr":6,"cr":5,"q":[],"st":[]},{"k":"town","r":57,"n":"Wicklow","c":"Wicklow","s":24.3,"na":"Leinster","nr":22,"cr":6,"q":[],"st":["8 independent cafés and tea rooms within a short walk of the centre."]},{"k":"town","r":58,"n":"Greencastle","c":"Donegal","s":21.2,"na":"Ulster","nr":7,"cr":6,"q":[],"st":[]},{"k":"village","r":1,"n":"Inistioge","c":"Kilkenny","s":87.9,"na":"Leinster","nr":1,"cr":1,"q":["Warm, cosy and great service."],"st":["Ireland's cosiest village.","Three times as many cafés and tea rooms per person as the typical village in the study.","Named in 6 press round-ups of the prettiest and cosiest places.","More historic buildings near the centre than 9 in 10 villages in the study."]},{"k":"village","r":2,"n":"Glengarriff","c":"Cork","s":79.0,"na":"Munster","nr":1,"cr":1,"q":["Lovely traditional decor!"],"st":["Munster's cosiest village.","More cafés and tea rooms per person than any other village in the study.","The third cosiest reviews of any village in the study. Over 3 in 10 of its reviews use words like cosy, snug or warm.","Named in 6 press round-ups of the prettiest and cosiest places."]},{"k":"village","r":3,"n":"Dunfanaghy","c":"Donegal","s":74.1,"na":"Ulster","nr":1,"cr":1,"q":[],"st":["Ulster's cosiest village (Cavan, Donegal and Monaghan).","The third cosiest reviews of any village in the study. Over 3 in 10 of its reviews use words like cosy, snug or warm.","Three times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":4,"n":"Glaslough","c":"Monaghan","s":73.7,"na":"Ulster","nr":2,"cr":null,"q":["There was a lovely fire lit upstairs keeping the place warm.","Beautiful little hidden gem in Glaslough."],"st":["Three times as many cafés and tea rooms per person as the typical village in the study.","More historic buildings near the centre than 9 in 10 villages in the study."]},{"k":"village","r":5,"n":"Ardara","c":"Donegal","s":70.6,"na":"Ulster","nr":3,"cr":2,"q":["Peat fire in the fireplace.","Lots of quirky little rooms that make it feel cosy."],"st":["The second cosiest reviews of any village in the study. 4 in 10 of its reviews use words like cosy, snug or warm."]},{"k":"village","r":6,"n":"Kilmacthomas","c":"Waterford","s":68.8,"na":"Munster","nr":2,"cr":1,"q":["The cafe itself was beautiful and cozy.","Utterly charming spot in Kilmac, Waterford."],"st":["More historic buildings near the centre than 9 in 10 villages in the study."]},{"k":"village","r":7,"n":"Roundwood","c":"Wicklow","s":67.8,"na":"Leinster","nr":2,"cr":1,"q":["We had a lovely table in front of the warm fire.","A generous warm welcome to a cozy meal next to the fire!"],"st":["The cosiest reviews of any village in the study. Over 4 in 10 of its reviews use words like cosy, snug or warm."]},{"k":"village","r":8,"n":"Doolin","c":"Clare","s":65.3,"na":"Munster","nr":3,"cr":1,"q":[],"st":["Five times as many cafés and tea rooms per person as the typical village in the study.","Named in 7 press round-ups of the prettiest and cosiest places."]},{"k":"village","r":9,"n":"Roundstone","c":"Galway","s":64.4,"na":"Connacht","nr":1,"cr":1,"q":["Grandma lights the fireplace at night.","Very typical and atmospheric."],"st":["Connacht's cosiest village.","Six times as many cafés and tea rooms per person as the typical village in the study.","Named in 7 press round-ups of the prettiest and cosiest places."]},{"k":"village","r":10,"n":"Waterville","c":"Kerry","s":61.6,"na":"Munster","nr":4,"cr":1,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":11,"n":"Union Hall","c":"Cork","s":58.6,"na":"Munster","nr":5,"cr":2,"q":[],"st":[]},{"k":"village","r":12,"n":"Sneem","c":"Kerry","s":58.3,"na":"Munster","nr":6,"cr":2,"q":[],"st":["Four times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":13,"n":"Cong","c":"Mayo","s":57.4,"na":"Connacht","nr":2,"cr":1,"q":[],"st":[]},{"k":"village","r":14,"n":"Eyeries","c":"Cork","s":56.8,"na":"Munster","nr":7,"cr":3,"q":[],"st":["Named in 6 press round-ups of the prettiest and cosiest places."]},{"k":"village","r":15,"n":"Downings","c":"Donegal","s":56.0,"na":"Ulster","nr":4,"cr":3,"q":[],"st":[]},{"k":"village","r":16,"n":"Kilmore Quay","c":"Wexford","s":55.9,"na":"Leinster","nr":3,"cr":1,"q":[],"st":["Three times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":17,"n":"Allihies","c":"Cork","s":55.4,"na":"Munster","nr":8,"cr":4,"q":[],"st":["Named in 7 press round-ups of the prettiest and cosiest places."]},{"k":"village","r":18,"n":"Freshford (Co Kilkenny)","c":"Kilkenny","s":55.0,"na":"Leinster","nr":4,"cr":2,"q":[],"st":[]},{"k":"village","r":19,"n":"Kinvara","c":"Galway","s":54.7,"na":"Connacht","nr":3,"cr":2,"q":[],"st":[]},{"k":"village","r":20,"n":"Ballyvaughan","c":"Clare","s":52.9,"na":"Munster","nr":9,"cr":2,"q":[],"st":["Four times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":21,"n":"Glencolmcille","c":"Donegal","s":52.3,"na":"Ulster","nr":5,"cr":4,"q":[],"st":["Five times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":22,"n":"Bennettsbridge","c":"Kilkenny","s":52.2,"na":"Leinster","nr":5,"cr":3,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":23,"n":"Rosscarbery","c":"Cork","s":51.8,"na":"Munster","nr":10,"cr":5,"q":[],"st":["More historic buildings near the centre than 9 in 10 villages in the study."]},{"k":"village","r":24,"n":"Duncannon","c":"Wexford","s":51.7,"na":"Leinster","nr":6,"cr":2,"q":[],"st":["Three times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":25,"n":"Caherdaniel","c":"Kerry","s":51.0,"na":"Munster","nr":11,"cr":3,"q":[],"st":[]},{"k":"village","r":26,"n":"Avoca","c":"Wicklow","s":49.8,"na":"Leinster","nr":7,"cr":2,"q":[],"st":[]},{"k":"village","r":27,"n":"Louisburgh","c":"Mayo","s":49.5,"na":"Connacht","nr":4,"cr":2,"q":[],"st":[]},{"k":"village","r":28,"n":"Durrow","c":"Laois","s":48.3,"na":"Leinster","nr":8,"cr":1,"q":[],"st":[]},{"k":"village","r":29,"n":"Ardmore","c":"Waterford","s":48.1,"na":"Munster","nr":12,"cr":2,"q":[],"st":[]},{"k":"village","r":30,"n":"Windgap","c":"Kilkenny","s":47.8,"na":"Leinster","nr":9,"cr":4,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":31,"n":"Baltimore","c":"Cork","s":47.1,"na":"Munster","nr":13,"cr":6,"q":[],"st":[]},{"k":"village","r":31,"n":"Schull","c":"Cork","s":47.1,"na":"Munster","nr":13,"cr":6,"q":[],"st":[]},{"k":"village","r":33,"n":"Newport (Co Mayo)","c":"Mayo","s":46.8,"na":"Connacht","nr":5,"cr":3,"q":[],"st":[]},{"k":"village","r":34,"n":"Glin","c":"Limerick","s":46.5,"na":"Munster","nr":15,"cr":null,"q":[],"st":[]},{"k":"village","r":35,"n":"Portmagee","c":"Kerry","s":46.0,"na":"Munster","nr":16,"cr":4,"q":[],"st":["Four times as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":36,"n":"Rathmullan","c":"Donegal","s":45.8,"na":"Ulster","nr":6,"cr":5,"q":[],"st":[]},{"k":"village","r":37,"n":"Goresbridge","c":"Kilkenny","s":45.3,"na":"Leinster","nr":10,"cr":5,"q":[],"st":[]},{"k":"village","r":38,"n":"Blackwater (Co Wexford)","c":"Wexford","s":44.6,"na":"Leinster","nr":11,"cr":3,"q":[],"st":[]},{"k":"village","r":38,"n":"Keadue","c":"Roscommon","s":44.6,"na":"Connacht","nr":6,"cr":null,"q":[],"st":[]},{"k":"village","r":40,"n":"Terryglass","c":"Tipperary","s":44.0,"na":"Munster","nr":17,"cr":null,"q":[],"st":[]},{"k":"village","r":41,"n":"St Mullins","c":"Carlow","s":42.4,"na":"Leinster","nr":12,"cr":1,"q":[],"st":[]},{"k":"village","r":42,"n":"Omeath","c":"Louth","s":42.3,"na":"Leinster","nr":13,"cr":null,"q":[],"st":[]},{"k":"village","r":43,"n":"Carrick","c":"Donegal","s":41.4,"na":"Ulster","nr":7,"cr":6,"q":[],"st":[]},{"k":"village","r":44,"n":"Fethard-on-Sea","c":"Wexford","s":41.1,"na":"Leinster","nr":14,"cr":4,"q":[],"st":[]},{"k":"village","r":45,"n":"Stoneyford","c":"Kilkenny","s":41.0,"na":"Leinster","nr":15,"cr":6,"q":[],"st":["Twice as many cafés and tea rooms per person as the typical village in the study."]},{"k":"village","r":46,"n":"Borris","c":"Carlow","s":40.8,"na":"Leinster","nr":16,"cr":2,"q":[],"st":[]},{"k":"village","r":47,"n":"Dromahair","c":"Leitrim","s":39.9,"na":"Connacht","nr":7,"cr":null,"q":[],"st":[]},{"k":"village","r":48,"n":"Riverstown","c":"Sligo","s":39.3,"na":"Connacht","nr":8,"cr":null,"q":[],"st":[]},{"k":"village","r":49,"n":"Glandore","c":"Cork","s":38.2,"na":"Munster","nr":18,"cr":8,"q":[],"st":[]},{"k":"village","r":50,"n":"Carraroe","c":"Galway","s":38.0,"na":"Connacht","nr":9,"cr":3,"q":[],"st":[]},{"k":"village","r":51,"n":"Portsalon","c":"Donegal","s":37.6,"na":"Ulster","nr":8,"cr":7,"q":[],"st":[]},{"k":"village","r":52,"n":"Glenties","c":"Donegal","s":37.1,"na":"Ulster","nr":9,"cr":8,"q":[],"st":[]},{"k":"village","r":53,"n":"Leighlinbridge","c":"Carlow","s":36.3,"na":"Leinster","nr":17,"cr":3,"q":[],"st":[]},{"k":"village","r":54,"n":"Geashill","c":"Offaly","s":35.4,"na":"Leinster","nr":18,"cr":null,"q":[],"st":[]},{"k":"village","r":55,"n":"Clonegal","c":"Carlow","s":34.8,"na":"Leinster","nr":19,"cr":4,"q":[],"st":[]},{"k":"village","r":56,"n":"Abbeyshrule","c":"Longford","s":33.9,"na":"Leinster","nr":20,"cr":null,"q":[],"st":[]},{"k":"village","r":56,"n":"Donore","c":"Meath","s":33.9,"na":"Leinster","nr":20,"cr":null,"q":[],"st":[]},{"k":"village","r":56,"n":"Quin","c":"Clare","s":33.9,"na":"Munster","nr":19,"cr":3,"q":[],"st":[]},{"k":"village","r":59,"n":"Ballinakill","c":"Laois","s":28.6,"na":"Leinster","nr":22,"cr":2,"q":[],"st":[]}];
+  var T = {"tabsLabel": "Choose towns or villages", "tabs": {"town": "Towns", "village": "Villages"}, "search": "Find a town or village", "title": {"town": "Ireland's Cosiest Towns", "village": "Ireland's Cosiest Villages"}, "sub": "Score out of 100. Tap a place to see why it's cosy.", "results": "{n} matches", "none": "No places match that search.", "of": "of", "alsoScored": "Also scored", "rankLabel": "No. {r} in Ireland {k}", "noun": {"town": "town", "village": "village"}, "outOf": "out of 100", "visitor": "One visitor wrote", "howScored": "See how it scored", "hideScored": "Hide the scoring", "rawNote": "Five measures, weighted as shown. Villages have fewer than 1,000 people.", "searchTitle": "Search results", "result1": "1 match", "visitors": "What visitors wrote", "method": "How we scored: visitor reviews, cafés and tea rooms, places to stay, historic buildings and press round-ups.", "nationLabel": "Choose a province", "areaLabel": "Choose an area", "allNations": "All of Ireland", "allAreas": "All areas", "titleIn": {"town": "The Cosiest Towns in {p}", "village": "The Cosiest Villages in {p}"}, "winner": "Winner", "close": "Close", "embed": "Embed this chart", "download": "Download image", "embedHelp": "Copy this code and paste it into your page. It opens on the view you're looking at now.", "copy": "Copy code", "copied": "Embed code copied", "preparing": "Preparing image…", "downloaded": "Image downloaded", "dlFail": "Sorry, the image could not be made. Please try again.", "embedTitle": "Ireland's cosiest towns and villages – Liquidline", "shotSub": "Cosiness score out of 100", "inUK": "in Ireland", "regionLabels": {"Ulster": "Ulster (Cavan, Donegal, Monaghan)"}};
+  var kind = "town", page = 0, sel = null, query = "", per = 10, nation = "", area = "";
+  var $ = function(id){ return document.getElementById(id); };
+  var CFG = {"hDesk": 760, "hMob": 955, "studyUrl": "liquidline.ie/news/cosiest-towns/", "source": "cosiest towns and villages study, November 2026.", "regions": ["Leinster", "Munster", "Connacht", "Ulster"]};
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g,""); }
+  function items(){
+    if (!query) return D.filter(function(d){ return d.k === kind && (!nation || d.na === nation) && (!area || d.c === area); });
+    var q = norm(query);
+    return D.filter(function(d){ return norm(d.n + " " + d.c).indexOf(q) > -1; });
+  }
+  function num(d){ return query ? d.r : area ? d.cr : nation ? d.nr : d.r; }
+  function ord(n){ var s = ["th","st","nd","rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  function rowHTML(d, i){
+    var n = num(d), win = n === 1 ? " win" : "";
+    return '<li><button type="button" class="row' + win + '" data-i="' + i + '"' + (sel === d ? ' aria-current="true"' : '') +
+       ' aria-label="' + esc((n ? n + ". " : "") + d.n + ", " + d.c + ". Score " + d.s.toFixed(1)) + '">' +
+      '<span class="rank">' + (n || "") + '</span>' +
+      '<span class="name"><strong>' + esc(d.n) + (n === 1 ? '<span class="tag">' + esc(T.winner) + '</span>' : '') + '</strong><span class="area">' + esc(d.c) + (query ? ' · ' + esc(T.noun[d.k]) : '') + '</span></span>' +
+      '<span class="track" aria-hidden="true"><span class="bar" style="width:' + d.s + '%"></span></span>' +
+      '<span class="score">' + d.s.toFixed(1) + '</span></button></li>';
+  }
+  function card(d){
+    if (!d) { $("card").innerHTML = ""; return; }
+    var bits = [];
+    var uk = d.r ? ord(d.r) + " " + T.inUK : "", nat = d.nr ? ord(d.nr) + " in " + d.na : "", cty = d.cr ? ord(d.cr) + " in " + d.c : "";
+    if (area) bits = [cty, uk]; else if (nation) bits = [nat, uk]; else bits = [uk, cty];
+    bits = bits.filter(Boolean);
+    if (!bits.length) bits.push(d.c + ", " + d.na);
+    var h = '<button type="button" class="close" id="close" aria-label="' + esc(T.close) + '">\u00d7</button><p class="kicker">' + esc(bits.join(" · ")) + '</p>' +
+      '<h2>' + esc(d.n) + '</h2><p class="big"><b>' + d.s.toFixed(1) + '</b><span>' + esc(T.outOf) + '</span></p>';
+    if (d.q.length) h += '<div class="quotes">' + d.q.map(function(q){ return '<blockquote>\u201c' + esc(q) + '\u201d</blockquote>'; }).join("") +
+      '<p class="who">' + esc(d.q.length > 1 ? T.visitors : T.visitor) + '</p></div>';
+    if (d.st.length) h += '<ul class="stats">' + d.st.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>';
+    $("card").innerHTML = h;
+    $("close").onclick = closeCard;
+  }
+  function render(){
+    var all = items(), pages = Math.max(1, Math.ceil(all.length / per));
+    if (page >= pages) page = pages - 1;
+    var slice = all.slice(page * per, page * per + per);
+    $("title").textContent = query ? T.searchTitle : (area || nation) ? T.titleIn[kind].replace("{p}", area || nation) : T.title[kind];
+    $("sub").textContent = query ? (all.length === 1 ? T.result1 : T.results.replace("{n}", all.length)) : T.sub;
+    var html = "", lastRanked = true;
+    slice.forEach(function(d, j){
+      lastRanked = !!num(d);
+      html += rowHTML(d, page * per + j);
+    });
+    $("list").innerHTML = html || '<li class="empty">' + esc(T.none) + '</li>';
+    var first = page * per + 1, last = page * per + slice.length;
+    $("pageinfo").textContent = all.length ? first + "–" + last + " " + T.of + " " + all.length : "";
+    $("prev").disabled = page === 0; $("next").disabled = page >= pages - 1;
+    Array.prototype.forEach.call(document.querySelectorAll(".row"), function(b){
+      b.onclick = function(){ var i = this.getAttribute("data-i"); sel = all[+i]; render(); card(sel); saveState(); openNear(document.querySelector('.row[data-i="' + i + '"]')); };
+    });
+  }
+  function fillAreas(){
+    var list = D.filter(function(d){ return d.k === kind && (!nation || d.na === nation); }).map(function(d){ return d.c; });
+    list = list.filter(function(c, i){ return list.indexOf(c) === i; }).sort();
+    if (list.indexOf(area) < 0) area = "";
+    $("area").innerHTML = '<option value="">' + esc(T.allAreas) + '</option>' + list.map(function(c){ return '<option' + (c === area ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join("");
+  }
+  (function(){
+    var ns = CFG.regions, lb = T.regionLabels || {};
+    $("nation").innerHTML = '<option value="">' + esc(T.allNations) + '</option>' + ns.map(function(n){ return '<option value="' + esc(n) + '">' + esc(lb[n] || n) + '</option>'; }).join("");
+  })();
+  function refilter(){ closeCard(); page = 0; $("q").value = ""; query = ""; var r = items(); sel = r[0] || null; render(); card(sel); saveState(); }
+  $("nation").onchange = function(){ nation = this.value; fillAreas(); refilter(); };
+  $("area").onchange = function(){ area = this.value; refilter(); };
+  function slug(s){ return norm(s).replace(/ +/g, "-"); }
+  function stateHash(){
+    var p = [];
+    if (kind !== "town") p.push("villages");
+    if (nation) p.push("nation-" + slug(nation));
+    if (area) p.push("area-" + slug(area));
+    if (sel) p.push("place-" + slug(sel.n));
+    return p.join("--");
+  }
+  function saveState(){}
+  function readState(){
+    var h = (location.hash || "").replace("#", ""); if (!h) return;
+    h.split("--").forEach(function(t){
+      if (t === "villages") kind = "village";
+      if (t.indexOf("nation-") === 0) CFG.regions.forEach(function(n){ if (slug(n) === t.slice(7)) nation = n; });
+      if (t.indexOf("area-") === 0) D.forEach(function(d){ if (slug(d.c) === t.slice(5)) area = d.c; });
+      if (t.indexOf("place-") === 0) D.forEach(function(d){ if (slug(d.n) === t.slice(6) && (!sel || d.k === kind)) sel = d; });
+    });
+    if (sel) kind = sel.k;
+  }
+  function say(m){ $("status").textContent = m; setTimeout(function(){ if ($("status").textContent === m) $("status").textContent = ""; }, 4000); }
+  function pageUrl(){ return location.href.split("#")[0].split("?")[0]; }
+  function embedCode(){
+    var hgt = '<style>.ll-cosy{height:' + CFG.hDesk + 'px}@media(max-width:700px){.ll-cosy{height:' + CFG.hMob + 'px}}</style>\n';
+    return hgt + '<iframe class="ll-cosy" src="' + pageUrl() + "#" + stateHash() + '" title="' + T.embedTitle + '" width="100%" style="border:0;width:100%;" loading="lazy" scrolling="no"></iframe>\n' +
+      '<p style="font:12px Arial,sans-serif;color:#5f5b5b;">Source: ' + (CFG.studyUrl ? '<a href="https://' + CFG.studyUrl + '">Liquidline</a>' : 'Liquidline') + '</p>';
+  }
+  $("embedBtn").onclick = function(){ var b = $("embedBox"), o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o); if (o) { $("embedCode").value = embedCode(); $("embedCode").select(); } };
+  $("embedClose").onclick = function(){ $("embedBox").classList.remove("open"); $("embedBtn").setAttribute("aria-expanded", "false"); $("embedBtn").focus(); };
+  $("copyBtn").onclick = function(){
+    var t = $("embedCode"); t.select();
+    var ok = function(){ say(T.copied); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t.value).then(ok, function(){ document.execCommand("copy"); ok(); });
+    else { document.execCommand("copy"); ok(); }
+  };
+  function buildShot(){
+    var all = items().slice(0, 10), title = $("title").textContent;
+    var h = '<h1>' + esc(title) + '</h1><p class="sub">' + esc(T.shotSub) + '</p>';
+    all.forEach(function(d){ var n = num(d);
+      h += '<div class="srow' + (n === 1 ? ' win' : '') + '"><span class="rank">' + (n || "") + '</span><span class="name"><strong>' + esc(d.n) + '</strong><span class="area">' + esc(d.c) + '</span></span>' +
+        '<span class="track"><span class="bar" style="width:' + d.s + '%;' + (n === 1 ? 'background:#e30613' : '') + '"></span></span><span class="score">' + d.s.toFixed(1) + '</span></div>'; });
+    h += '<p class="sfoot">Source: <b>Liquidline</b>, ' + esc(CFG.source) + '<br>Full study: <b style="white-space:nowrap">' + esc(CFG.studyUrl) + '</b></p>';
+    $("shot").innerHTML = h; return title;
+  }
+  $("dlBtn").onclick = function(){
+    if (typeof html2canvas !== "function") { say(T.dlFail); return; }
+    var b = this; b.disabled = true; say(T.preparing);
+    var title = buildShot();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+      return html2canvas($("shot"), { scale: 2, backgroundColor: "#ffffff" });
+    }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(res, "image/png"); });
+    }).then(function(blob){
+      var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = "liquidline-" + slug(title) + ".png"; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000); b.disabled = false; say(T.downloaded);
+    }).catch(function(){ b.disabled = false; say(T.dlFail); });
+  };
+  var mobile = window.matchMedia("(max-width:700px)");
+  function closeCard(){ var c = $("card"); c.classList.remove("open"); var r = document.querySelector('.row[aria-current="true"]'); if (r && mobile.matches) r.focus(); }
+  function openNear(btn){
+    var c = $("card");
+    if (!mobile.matches) { c.classList.remove("open"); c.style.top = ""; return; }
+    c.classList.add("open");
+    var lay = document.querySelector(".layout"), top = btn.getBoundingClientRect().bottom - lay.getBoundingClientRect().top + 4;
+    var maxTop = Math.max(0, lay.offsetHeight - c.offsetHeight);
+    c.style.top = Math.min(top, maxTop) + "px";
+    $("close").focus();
+  }
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeCard(); });
+  function setKind(k){
+    kind = k; fillAreas(); setTimeout(saveState, 0);
+    kind = k; page = 0;
+    Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === k); });
+    sel = items()[0] || null; render(); card(sel);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.onclick = function(){ $("q").value = ""; query = ""; setKind(this.getAttribute("data-k")); }; });
+  $("prev").onclick = function(){ page--; closeCard(); render(); };
+  $("next").onclick = function(){ page++; closeCard(); render(); };
+  $("q").oninput = function(){ query = this.value.trim(); page = 0; var r = items(); if (r.length && r.indexOf(sel) < 0) { sel = r[0]; card(sel); } render(); };
+  readState();
+  var want = sel;
+  document.body.classList.add("intro");
+  $("nation").value = nation; fillAreas(); $("area").value = area;
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === kind); });
+  var list0 = items();
+  sel = want && list0.indexOf(want) > -1 ? want : (list0[0] || null);
+  if (sel) page = Math.floor(list0.indexOf(sel) / per);
+  render(); card(sel);
+  setTimeout(function(){ document.body.classList.remove("intro"); }, 900);
+})();
+</script>
+<div class="shot" id="shot" aria-hidden="true"></div>
+</body>
+</html>
