@@ -1,0 +1,86 @@
+﻿Canada-wide rank,Place,Province or territory,Rank in province,Town or village,People,Coziness score (out of 100),"Independent coffee shops, bakeries and tea rooms (within 1 km)",Independent places to stay (within 1 km),Independent bookstores (within 1 km),Reviews read,Reviews using cozy words (%),Reviews mentioning a fireplace or wood stove (%),Historic buildings (within 1 km),Times named in press lists
+1,Lunenburg,Nova Scotia,1,town,2405,87.1,3,12,2,20,45,0,53,10
+2,Saint Andrews,New Brunswick,1,town,1715,83.3,4,18,1,20,25,0,113,4
+3,Ucluelet,British Columbia,1,town,1940,73.8,8,19,0,27,18.5,3.7,0,5
+4,Kamouraska,Quebec,1,village,328,73.2,3,3,0,21,23.8,0,4,5
+5,Banff,Alberta,1,town,8305,68.7,13,46,1,27,11.1,0,13,9
+6,Stratford,Ontario,1,town,32878,67.9,7,26,3,21,14.3,0,37,9
+7,Churchill,Manitoba,1,village,870,67.5,0,7,0,17,41.2,11.8,2,5
+8,Canmore,Alberta,2,town,13268,64.2,18,11,2,–,–,–,2,5
+9,Jasper,Alberta,3,town,4029,62.9,8,10,0,30,16.7,0,10,4
+10,Perth,Ontario,2,town,6486,62.2,4,2,3,30,20,0,25,9
+11,Annapolis Royal,Nova Scotia,2,village,530,61.5,6,3,1,30,13.3,0,88,4
+12,Whistler,British Columbia,2,town,9974,61.3,9,26,1,–,–,–,0,6
+13,Baddeck,Nova Scotia,3,village,818,60.7,2,7,0,–,–,–,5,5
+14,Niagara-on-the-Lake,Ontario,3,town,19088,58.9,3,9,1,–,–,–,13,14
+15,Port Hope,Ontario,4,town,13012,58.8,6,3,2,–,–,–,45,5
+16,Baie-Saint-Paul,Quebec,2,town,4308,58.7,6,6,0,30,16.7,0,1,7
+17,Yarmouth,Nova Scotia,4,town,7848,58.5,6,3,1,–,–,–,35,4
+18,Harrison Hot Springs,British Columbia,3,town,1552,58.3,12,7,0,–,–,–,0,3
+19,Lake Louise,Alberta,4,town,1000,58.2,4,3,1,–,–,–,1,3
+20,Almonte,Ontario,5,town,6098,57.8,5,2,1,–,–,–,3,9
+21,Val Marie,Saskatchewan,1,village,120,57.2,1,6,0,20,15,0,0,2
+22,Revelstoke,British Columbia,4,town,7709,57.1,6,8,1,–,–,–,0,6
+23,Brockville,Ontario,6,town,22293,57,8,5,3,–,–,–,2,5
+24,Elora,Ontario,7,town,7800,56.4,8,4,1,33,15.2,0,8,9
+25,Picton,Ontario,8,town,4508,55.6,6,9,1,–,–,–,0,3
+26,Fort Macleod,Alberta,5,town,3038,54.5,–,–,–,–,–,–,7,5
+27,Tofino,British Columbia,5,town,2217,54.4,7,12,1,29,6.9,0,0,7
+28,Sussex,New Brunswick,2,town,5447,53.9,3,3,0,30,33.3,0,1,3
+29,North Hatley,Quebec,3,village,675,53.1,3,3,0,–,–,–,1,2
+30,Dawson City,The North,1,town,1092,52.8,2,13,0,30,10,0,29,6
+31,Souris,Prince Edward Island,1,town,1079,52.1,1,4,0,30,20,0,6,2
+32,Paris,Ontario,9,town,14956,50.9,3,1,1,–,–,–,8,8
+33,Brigus,Newfoundland and Labrador,1,village,699,50.9,4,1,0,30,13.3,0,10,4
+34,Wolfville,Nova Scotia,5,town,5057,50.7,2,3,0,–,–,–,17,4
+35,Fernie,British Columbia,6,town,5519,50.5,3,4,0,–,–,–,0,7
+36,Goderich,Ontario,10,town,7728,50.5,1,2,1,–,–,–,31,8
+37,Bragg Creek,Alberta,6,village,432,50.3,3,1,1,–,–,–,0,2
+38,Chester,Nova Scotia,6,town,1371,50.1,2,1,0,–,–,–,14,3
+39,Summerside,Prince Edward Island,2,town,14952,50,3,1,1,–,–,–,104,4
+40,Saint-Sauveur,Quebec,4,town,11580,50,3,12,1,–,–,–,1,2
+41,St. Martins,New Brunswick,3,village,320,49.8,1,4,0,–,–,–,0,3
+42,Mahone Bay,Nova Scotia,7,town,1064,49.5,3,2,0,30,10,0,15,10
+43,Montague,Prince Edward Island,3,town,1896,48.7,2,2,0,20,10,0,30,1
+44,Port Renfrew,British Columbia,7,village,262,48.6,1,4,0,–,–,–,0,2
+45,St. Jacobs,Ontario,11,town,1959,48.3,2,0,1,–,–,–,2,5
+46,Mont-Tremblant,Quebec,5,town,10992,48.2,3,7,0,–,–,–,1,3
+47,Duncan,British Columbia,8,town,24358,48.2,8,2,1,–,–,–,1,3
+48,Digby,Nova Scotia,8,town,2001,47.7,1,4,0,–,–,–,1,4
+49,Gagetown,New Brunswick,4,village,324,47.6,1,2,0,–,–,–,2,1
+50,Nelson,British Columbia,9,town,11198,47.6,3,3,0,–,–,–,0,10
+51,Squamish,British Columbia,10,town,22221,47.1,6,4,2,–,–,–,0,3
+52,Osoyoos,British Columbia,11,town,4859,46.9,2,6,0,–,–,–,0,4
+53,Alma,New Brunswick,5,village,282,46.1,1,7,0,29,6.9,0,1,4
+54,Fogo Island,Newfoundland and Labrador,2,town,2117,46,1,5,0,–,–,–,0,4
+55,Les Éboulements,Quebec,6,town,1465,45.6,2,1,0,–,–,–,1,3
+56,Shediac,New Brunswick,6,town,8563,45.5,1,5,0,–,–,–,2,4
+57,Sainte-Rose-du-Nord,Quebec,7,village,434,45.2,1,1,0,–,–,–,0,4
+58,Bloomfield,Ontario,12,village,477,45.1,1,4,0,–,–,–,0,1
+59,Neepawa,Manitoba,2,town,4938,44.7,2,1,0,30,16.7,0,6,4
+60,Frelighsburg,Quebec,8,village,285,44.7,2,0,0,–,–,–,1,3
+61,Elliston,Newfoundland and Labrador,3,village,315,44.2,1,5,0,35,14.3,0,8,1
+62,Field,British Columbia,12,village,157,44.1,2,5,0,30,10,0,1,2
+63,Steinbach,Manitoba,3,town,17589,43.9,8,3,1,–,–,–,0,1
+64,Sylvan Lake,Alberta,7,town,16142,43.7,3,3,0,–,–,–,0,5
+65,Minnedosa,Manitoba,4,town,2407,43.6,2,1,0,–,–,–,2,2
+66,Peace River,Alberta,8,town,4264,43.5,1,3,0,–,–,–,1,4
+67,Dildo,Newfoundland and Labrador,4,village,803,43,1,2,0,–,–,–,1,1
+68,Victoria,Prince Edward Island,4,village,87,42.7,0,2,0,–,–,–,32,1
+69,Caraquet,New Brunswick,7,town,3190,41.3,1,1,1,–,–,–,1,3
+70,Boissevain,Manitoba,5,town,1567,39.8,2,0,0,–,–,–,1,2
+71,Pincher Creek,Alberta,9,town,3463,39.8,2,1,0,–,–,–,0,3
+72,Humboldt,Saskatchewan,2,town,5313,39.2,1,2,0,–,–,–,2,2
+73,Swift Current,Saskatchewan,3,town,16304,38.5,4,1,1,21,9.5,0,1,1
+74,Dauphin,Manitoba,6,town,8034,37.2,4,3,0,23,4.3,0,2,1
+75,North Rustico,Prince Edward Island,5,village,327,36.9,0,1,0,–,–,–,0,4
+76,Killarney,Ontario,13,village,397,35.3,0,2,0,–,–,–,0,2
+77,Drumheller,Alberta,10,town,6497,33.9,0,1,0,–,–,–,0,5
+78,Portage la Prairie,Manitoba,7,town,12944,33.7,1,0,0,–,–,–,5,1
+79,Wolseley,Saskatchewan,4,village,852,33,0,1,0,–,–,–,1,1
+80,Maple Creek,Saskatchewan,5,town,2151,32.7,1,0,0,–,–,–,0,2
+81,Kensington,Prince Edward Island,6,town,1743,31.9,3,0,0,27,3.7,0,3,1
+82,St. Anthony,Newfoundland and Labrador,5,town,1986,30.7,0,1,0,–,–,–,0,2
+83,Blacks Harbour,New Brunswick,8,village,907,30.2,0,1,0,–,–,–,0,1
+84,Estevan,Saskatchewan,6,town,10629,28.6,1,0,0,–,–,–,0,1
+85,Fort Qu'Appelle,Saskatchewan,7,town,1866,27,1,2,0,30,3.3,0,2,2

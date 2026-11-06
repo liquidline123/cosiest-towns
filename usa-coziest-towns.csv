@@ -1,0 +1,476 @@
+﻿US-wide rank,Place,State,Rank in state,Town or village,People,Coziness score (out of 100),"Independent coffee shops, bakeries and tea rooms (within 1 km)",Independent places to stay (within 1 km),Independent bookstores (within 1 km),Reviews read,Reviews using cozy words (%),Reviews mentioning a fireplace or wood stove (%),Historic buildings (within 1 km),Times named in press lists
+1,Lenox,Massachusetts,1,town,1639,85.5,4,5,1,25,36,4,288,7
+2,Key West,Florida,1,town,25240,85.1,27,68,2,25,32,0,2697,8
+3,St. Augustine,Florida,2,town,16033,84.9,11,22,0,20,70,0,777,17
+4,Lewes,Delaware,1,town,3702,84.4,5,9,1,25,28,4,648,7
+5,Stowe,Vermont,1,village,616,84.3,3,4,1,25,28,8,100,21
+6,Cold Spring,New York,1,town,1995,83.6,8,2,1,17,41.2,23.5,248,4
+7,Williamsburg,Virginia,1,town,16030,82.1,7,28,2,14,35.7,0,549,7
+8,Lambertville,New Jersey,1,town,4197,81.9,6,5,1,16,50,0,954,4
+9,Exeter,New Hampshire,1,town,10109,81.6,10,3,4,20,60,5,95,5
+10,Mendocino,California,1,village,932,81.4,7,15,1,14,57.1,14.3,0,3
+11,New Hope,Pennsylvania,1,town,2641,81,3,8,0,25,32,4,953,6
+12,Lake Placid,New York,2,town,2302,80.5,7,14,1,12,25,0,24,16
+13,Wellsboro,Pennsylvania,2,town,3422,80.1,4,4,1,10,50,0,534,5
+14,Saratoga Springs,New York,3,town,28741,79.8,12,5,2,25,28,4,1398,7
+15,Newport,Rhode Island,1,town,24482,78.6,14,14,2,25,24,0,1764,15
+16,Annapolis,Maryland,1,town,40689,78.3,10,10,3,25,28,4,1220,5
+17,Port Townsend,Washington,1,town,10649,78.2,6,7,0,30,30,3.3,779,6
+18,La Conner,Washington,2,village,994,78,13,5,1,27,14.8,18.5,29,5
+19,Middlebury,Vermont,2,town,7304,77.8,8,6,2,25,32,0,463,4
+20,Black Mountain,North Carolina,1,town,8572,77.8,7,3,2,25,36,4,155,4
+21,Shepherdstown,West Virginia,1,town,1524,77,3,1,1,25,28,12,425,5
+22,Lititz,Pennsylvania,3,town,9733,76.6,9,4,1,25,44,0,117,5
+23,Provincetown,Massachusetts,2,town,3318,75.8,16,42,4,25,12,0,1133,4
+24,Solvang,California,2,town,5988,75.5,6,12,0,30,23.3,6.7,2,17
+25,West Yellowstone,Montana,1,town,1202,75.5,6,38,1,25,20,0,10,6
+26,Berlin,Maryland,2,town,5349,75.2,7,2,1,25,40,0,44,7
+27,Harpers Ferry,West Virginia,2,village,263,75.1,7,3,0,32,37.5,0,263,4
+28,Rehoboth Beach,Delaware,2,town,1257,75,11,17,1,30,16.7,3.3,2,4
+29,Cannon Beach,Oregon,1,town,1500,74.5,5,15,0,28,17.9,7.1,2,7
+30,Charlottesville,Virginia,2,town,44767,74.5,15,4,6,25,32,0,1188,5
+31,Oak Bluffs,Massachusetts,3,town,2324,74,5,5,0,25,24,0,625,5
+32,Cape May,New Jersey,2,town,2742,73.9,11,68,0,30,13.3,0,601,13
+33,Ocean Grove,New Jersey,3,town,3057,73.6,6,5,1,25,28,0,799,2
+34,Carmel-by-the-Sea,California,3,town,3124,73.4,11,21,0,28,25,0,2,8
+35,North Conway,New Hampshire,2,town,2116,72.7,6,4,0,25,20,4,5,8
+36,Telluride,Colorado,1,town,2486,72.6,3,12,1,28,10.7,3.6,305,12
+37,Virginia City,Nevada,1,village,787,71.5,5,7,0,21,9.5,0,388,9
+38,Hood River,Oregon,2,town,8350,71.3,7,5,0,29,20.7,3.4,18,10
+39,Bayfield,Wisconsin,1,village,592,69.9,2,25,2,40,20,0,253,7
+40,Saugatuck,Michigan,1,village,879,69.3,1,9,2,25,24,8,4,3
+41,Fernandina Beach,Florida,3,town,13672,69.3,7,7,2,15,13.3,0,303,5
+42,Beaufort,South Carolina,1,town,14334,69,5,4,1,25,20,0,477,8
+43,Wallace,Idaho,1,village,823,68.8,5,6,2,30,10,0,789,6
+44,Williams,Arizona,1,town,3482,68.7,4,13,0,27,18.5,0,179,5
+45,Bryson City,North Carolina,2,town,1522,68.3,2,6,0,25,32,0,1,6
+46,Moab,Utah,1,town,5242,68,12,16,1,27,11.1,0,103,5
+47,Marfa,Texas,1,town,1641,67.8,7,9,2,35,11.4,0,176,10
+48,Estes Park,Colorado,2,town,5795,67.5,13,15,1,45,8.9,2.2,27,7
+49,Woodstock,Vermont,3,village,927,67.4,2,5,2,–,–,–,122,21
+50,Dillsboro,North Carolina,3,village,216,66.7,2,3,0,15,20,0,10,4
+51,Jackson,Wyoming,1,town,10680,66.6,9,43,1,38,7.9,5.3,10,8
+52,Montpelier,Vermont,4,town,7915,66.5,7,3,2,30,16.7,0,479,5
+53,Salem,Massachusetts,4,town,45677,66.2,22,9,3,–,–,–,1179,6
+54,Crested Butte,Colorado,3,town,1643,65.9,7,4,1,–,–,–,22,6
+55,Dahlonega,Georgia,1,town,7830,65.8,4,1,1,25,28,0,41,11
+56,Westerly,Rhode Island,2,town,18423,65.7,6,0,1,30,20,3.3,868,6
+57,Red Wing,Minnesota,1,town,16788,65.5,4,1,2,30,26.7,3.3,214,4
+58,Park City,Utah,2,town,8292,65.3,12,13,1,26,7.7,0,109,12
+59,Tombstone,Arizona,2,town,1382,64.9,3,18,2,–,–,–,15,5
+60,Coupeville,Washington,3,town,1935,64.6,5,3,1,–,–,–,105,5
+61,Jim Thorpe,Pennsylvania,4,town,4543,64.5,3,14,3,–,–,–,37,13
+62,Friday Harbor,Washington,4,town,2744,64.5,8,9,2,–,–,–,1,5
+63,Woodstock,New York,4,town,2521,64.5,6,7,2,–,–,–,7,5
+64,Honokaʻa,Hawaii,1,town,2699,64.5,6,1,0,20,30,0,39,2
+65,Winthrop,Washington,5,village,603,64.3,5,13,1,–,–,–,1,4
+66,Gettysburg,Pennsylvania,5,town,8647,64.2,7,12,2,–,–,–,456,3
+67,Cooperstown,New York,5,town,1844,64,2,6,1,–,–,–,1920,4
+68,Rhinebeck,New York,6,town,2586,63.7,5,3,1,–,–,–,1917,3
+69,Sisters,Oregon,3,town,2957,63.5,8,5,2,–,–,–,1,6
+70,Council Grove,Kansas,1,town,2101,63.3,4,1,0,20,25,0,60,3
+71,Davis,West Virginia,3,village,578,63.3,3,2,0,25,16,4,3,3
+72,Truth or Consequences,New Mexico,1,town,5942,62.9,4,11,2,28,17.9,0,132,2
+73,Lake George,New York,7,town,1007,62.8,3,12,0,–,–,–,16,6
+74,Ouray,Colorado,4,village,912,62.8,1,21,1,–,–,–,272,4
+75,Hamilton,Montana,2,town,5383,62.8,5,4,1,31,16.1,0,216,4
+76,Brownville,Nebraska,1,village,140,62.6,–,–,–,28,46.4,0,21,4
+77,Winnemucca,Nevada,2,town,8225,62.3,2,9,0,13,30.8,0,4,4
+78,Langley,Washington,6,town,1139,62.1,5,5,2,–,–,–,1,4
+79,Leavenworth,Washington,7,town,2908,61.9,24,23,1,40,10,0,9,29
+80,Cottonwood Falls,Kansas,2,village,833,61.9,1,1,0,22,36.4,0,4,4
+81,Skaneateles,New York,8,town,2530,61.2,3,3,1,–,–,–,69,6
+82,St. Michaels,Maryland,3,town,1073,61.2,3,3,1,30,10,0,301,5
+83,Doylestown,Pennsylvania,6,town,8382,61,8,2,3,–,–,–,1073,3
+84,Ashland,Oregon,4,town,20935,61,5,7,1,–,–,–,597,5
+85,Ithaca,New York,9,town,33768,61,18,4,3,–,–,–,121,5
+86,Cedar Key,Florida,4,village,736,60.7,5,8,0,–,–,–,0,5
+87,Bisbee,Arizona,3,town,4957,60.7,4,8,0,30,10,0,656,7
+88,Portsmouth,New Hampshire,3,town,22938,60.6,19,3,2,19,5.3,0,82,12
+89,New Shoreham,Rhode Island,3,town,1413,60.6,2,21,1,25,8,0,42,5
+90,Taos,New Mexico,2,town,6453,60.5,4,2,0,35,14.3,5.7,0,13
+91,Yachats,Oregon,5,town,1018,60.4,4,7,1,–,–,–,0,4
+92,Bardstown,Kentucky,1,town,14104,60.3,0,1,0,39,25.6,7.7,273,13
+93,Kennebunkport,Maine,1 (joint),town,1264,60.3,2,11,0,30,10,0,137,8
+94,Manzanita,Oregon,6,village,639,60.1,6,7,1,–,–,–,1,2
+95,Panguitch,Utah,3,town,1788,60,3,13,0,–,–,–,382,2
+96,Salida,Colorado,5,town,6007,59.8,7,4,0,–,–,–,89,4
+97,Prescott,Arizona,4,town,48224,59.7,11,3,0,–,–,–,627,10
+98,Camden,Maine,1 (joint),town,3850,59.6,1,13,3,24,8.3,0,167,8
+99,Newburyport,Massachusetts,5,town,19163,59.6,5,4,2,–,–,–,2546,4
+100,Bar Harbor,Maine,3,town,2260,59.2,9,23,2,30,0,0,46,7
+101,Naples,Florida,5,town,20168,58.6,17,11,0,–,–,–,1,6
+102,Littleton,New Hampshire,4,town,4467,58.6,5,3,1,–,–,–,6,5
+103,Jackson,New Hampshire,5,town,1070,58.5,3,8,0,–,–,–,23,3
+104,Skagway,Alaska,1 (joint),town,1164,58.4,6,4,1,30,13.3,0,0,3
+105,Seward,Alaska,1 (joint),town,2882,58.3,4,9,0,40,22.5,0,10,3
+106,Manchester,Vermont,5,village,767,58.3,7,1,1,–,–,–,1,4
+107,Magnolia Springs,Alabama,1,village,853,58.2,–,–,–,30,23.3,0,76,4
+108,Nashville,Indiana,1,town,1264,58,4,4,0,44,2.3,2.3,87,7
+109,Apalachicola,Florida,6,town,2461,58,1,2,2,–,–,–,655,6
+110,Red Lodge,Montana,3,town,2686,58,5,2,1,–,–,–,178,2
+111,Northampton,Massachusetts,6,town,31315,58,12,1,5,–,–,–,353,5
+112,Asbury Park,New Jersey,4,town,15473,58,7,9,1,–,–,–,54,3
+113,Galena,Illinois,1,town,3207,57.8,3,6,0,41,12.2,0,1003,21
+114,Whitefish,Montana,4,town,9256,57.8,8,6,2,33,3,3,4,12
+115,Medora,North Dakota,1,village,160,57.6,2,6,1,30,6.7,0,8,9
+116,New Harmony,Indiana,2,village,686,57.2,3,10,0,43,14,0,238,3
+117,Paia,Hawaii,2,town,2470,57,7,2,0,–,–,–,0,7
+118,Deadwood,South Dakota,1,town,1347,57,0,3,0,27,22.2,0,391,6
+119,Hanover,New Hampshire,6,town,9078,56.9,10,2,2,–,–,–,0,7
+120,Joseph,Oregon,7,town,1175,56.9,2,4,0,–,–,–,3,6
+121,Georgetown,Colorado,6,town,1257,56.8,3,2,0,–,–,–,16,5
+122,Jemez Springs,New Mexico,3,village,204,56.8,2,3,0,25,12,4,0,2
+123,Homer,Alaska,3,town,6136,56.7,4,8,2,–,–,–,0,5
+124,Talkeetna,Alaska,4,town,1055,56.6,1,6,0,25,12,0,13,5
+125,Elkins,West Virginia,4,town,6698,56.4,2,3,1,–,–,–,622,4
+126,Julian,California,4,town,1768,56.4,3,3,1,–,–,–,0,5
+127,Eureka Springs,Arkansas,1,town,2188,55.8,2,7,0,48,12.5,0,482,12
+128,Chincoteague,Virginia,3,town,3279,55.8,3,9,1,–,–,–,0,4
+129,Mount Vernon,Iowa,1,town,4518,55.7,6,0,1,30,20,0,62,3
+130,Helen,Georgia,2,village,630,55.5,5,4,0,25,4,0,0,16
+131,Ojai,California,5,town,7563,55.5,5,6,0,–,–,–,2,5
+132,Middleburg,Virginia,4,village,696,55.4,1,2,0,–,–,–,161,4
+133,Sandpoint,Idaho,2,town,10444,55.3,4,2,0,25,16,0,3,6
+134,Buckhannon,West Virginia,5,town,5049,55.3,2,7,0,–,–,–,412,3
+135,New Glarus,Wisconsin,2,town,2277,55.2,3,2,0,36,19.4,0,75,3
+136,Petoskey,Michigan,2,town,5810,55.2,3,1,0,–,–,–,401,7
+137,Tarpon Springs,Florida,7,town,26168,55.2,5,1,1,–,–,–,433,6
+138,Avalon,California,6,town,3267,55.1,3,12,0,–,–,–,6,3
+139,Jamestown,Rhode Island,4,town,5494,54.8,–,–,–,–,–,–,98,6
+140,Vail,Colorado,7,town,4466,54.8,3,6,0,–,–,–,0,10
+141,Ogunquit,Maine,4,town,1601,54.8,1,15,0,–,–,–,6,5
+142,Eagles Mere,Pennsylvania,7,village,154,54.5,1,1,1,–,–,–,234,1
+143,Wiscasset,Maine,5,town,1232,54.4,2,3,1,–,–,–,31,2
+144,Mount Dora,Florida,8,town,18261,54.4,7,3,1,–,–,–,0,11
+145,Dorset,Vermont,6,village,360,54.3,1,1,0,–,–,–,115,4
+146,Highlands,North Carolina,4,town,1119,54.3,1,7,0,–,–,–,74,3
+147,South Haven,Michigan,3,town,4017,54,7,1,1,–,–,–,1,4
+148,Poulsbo,Washington,8,town,12562,54,10,2,2,–,–,–,0,5
+149,Jerome,Arizona,5,village,457,54,1,4,0,–,–,–,0,6
+150,Livingston,Montana,5,town,9021,53.9,6,1,3,–,–,–,424,2
+151,Sitka,Alaska,5,town,8355,53.9,4,5,1,–,–,–,0,5
+152,Abingdon,Virginia,5,town,8316,53.9,4,2,0,–,–,–,156,4
+153,Rockport,Massachusetts,7,town,5010,53.9,2,4,0,–,–,–,31,6
+154,Easton,Maryland,4,town,17381,53.9,4,2,1,–,–,–,961,3
+155,Decorah,Iowa,2,town,7454,53.8,–,–,–,–,–,–,93,5
+156,Brattleboro,Vermont,7,town,7352,53.8,5,1,0,–,–,–,213,4
+157,Silverton,Colorado,8,village,731,53.7,1,9,0,–,–,–,9,3
+158,Lewisburg,West Virginia,6,town,3765,53.6,2,1,0,–,–,–,331,6
+159,Micanopy,Florida,9,village,660,53.6,1,1,0,–,–,–,36,7
+160,New Castle,Delaware,3,town,5715,53.6,2,2,1,–,–,–,463,3
+161,Ely,Minnesota,2,town,3214,53.5,3,4,0,30,16.7,0,2,3
+162,Cody,Wyoming,2,town,10391,53.5,2,12,0,–,–,–,20,6
+163,Boothbay Harbor,Maine,6,village,872,53.5,5,19,2,30,6.7,0,3,2
+164,Durango,Colorado,9,town,19811,53.4,13,5,3,30,0,0,191,12
+165,Ferndale,California,7,town,1361,53.4,1,2,1,–,–,–,44,4
+166,Castine,Maine,7,town,1014,53.4,1,2,1,–,–,–,260,2
+167,Madison,Indiana,3,town,12108,53.4,4,3,0,39,12.8,0,1666,6
+168,Sturgeon Bay,Wisconsin,3,town,9940,53.4,7,9,1,42,11.9,0,71,4
+169,Leland,Michigan,4,village,410,53.4,2,11,0,39,12.8,0,17,3
+170,Baker City,Oregon,8,town,10135,53.3,2,3,1,–,–,–,78,5
+171,Andalusia,Alabama,2,town,8728,53.2,–,–,–,–,–,–,72,5
+172,Mystic,Connecticut,1,town,4348,53.2,7,3,1,40,5,0,786,10
+173,Bandera,Texas,2,village,891,53.1,1,6,2,–,–,–,7,2
+174,Sequim,Washington,9,town,8199,53.1,10,2,0,–,–,–,1,4
+175,Jasper,Arkansas,2,village,518,52.9,3,1,1,35,14.3,0,32,2
+176,Angola,Indiana,4,town,9432,52.8,–,–,–,–,–,–,51,5
+177,Little Compton,Rhode Island,5,town,3553,52.7,–,–,–,–,–,–,24,6
+178,Philipsburg,Montana,6,village,913,52.7,1,4,0,–,–,–,163,2
+179,Wamego,Kansas,3,town,4888,52.5,2,2,0,25,20,0,3,3
+180,Fairbanks,Alaska,6,town,31732,52.4,4,3,2,–,–,–,11,6
+181,Springdale,Utah,4,village,595,52.3,5,15,0,34,8.8,0,1,3
+182,Manteo,North Carolina,5,town,1595,52.2,1,5,1,–,–,–,6,3
+183,Sedona,Arizona,6,town,9778,52.1,11,9,0,32,6.2,0,5,10
+184,Weston,Vermont,8,village,77,52.1,–,–,–,–,–,–,75,4
+185,Oxford,Mississippi,1,town,26801,52,4,1,4,40,15,0,525,7
+186,Blue Ridge,Georgia,3,town,1246,51.9,–,–,–,–,–,–,3,8
+187,Frankenmuth,Michigan,5,town,5185,51.8,3,2,0,–,–,–,0,22
+188,Meredith,New Hampshire,7,town,2527,51.7,2,4,1,–,–,–,1,3
+189,Southport,North Carolina,6,town,4341,51.6,8,2,0,–,–,–,0,3
+190,Onancock,Virginia,6,town,1160,51.5,1,3,0,–,–,–,271,2
+191,Stroudsburg,Pennsylvania,8,town,5819,51.2,5,0,1,–,–,–,186,3
+192,Spearfish,South Dakota,2,town,13803,51.2,5,4,1,–,–,–,0,4
+193,Hayward,Wisconsin,4,town,2587,51.2,3,2,0,–,–,–,1,4
+194,Nauvoo,Illinois,2,village,910,51,2,2,0,–,–,–,2,3
+195,Jacksonville,Oregon,9,town,2945,51,4,4,1,38,5.3,0,77,8
+196,Taylors Falls,Minnesota,3,town,1056,51,2,2,0,–,–,–,34,2
+197,Traverse City,Michigan,6,town,15782,51,10,5,4,41,4.9,0,636,8
+198,Hinton,West Virginia,7,town,2159,50.9,1,4,0,–,–,–,412,2
+199,Astoria,Oregon,10,town,9906,50.9,2,1,0,–,–,–,313,7
+200,Yellow Springs,Ohio,1,town,3756,50.7,4,1,1,35,8.6,0,266,6
+201,Valdez,Alaska,7,town,3715,50.6,3,7,0,–,–,–,0,3
+202,Nantucket,Massachusetts,8,town,10166,50.5,2,2,1,–,–,–,2,13
+203,Nebraska City,Nebraska,2,town,7526,50.1,2,0,0,23,13,0,515,4
+204,Minocqua,Wisconsin,5,village,411,49.6,1,2,0,–,–,–,1,3
+205,Blowing Rock,North Carolina,7,town,1336,49.5,0,5,0,–,–,–,46,7
+206,Gustavus,Alaska,8,village,623,49.4,2,3,0,–,–,–,0,2
+207,Midway,Utah,5,town,6064,49.4,2,2,0,–,–,–,16,5
+208,Jefferson,Texas,3,town,1996,49.4,1,1,0,–,–,–,25,7
+209,Pinedale,Wyoming,3,town,2005,49.4,6,8,1,25,0,0,7,1
+210,Travelers Rest,South Carolina,2,town,8960,49.4,8,2,0,25,12,0,1,2
+211,Marble Falls,Texas,4,town,9413,49.3,5,2,0,–,–,–,1,4
+212,Cedarburg,Wisconsin,6,town,13011,49.2,2,2,0,–,–,–,215,4
+213,Fayetteville,West Virginia,8,town,2753,49.1,4,0,0,–,–,–,126,3
+214,Harbor Springs,Michigan,7,town,1262,49.1,4,0,1,–,–,–,5,3
+215,Granville,Ohio,2,town,6308,49,2,2,1,–,–,–,0,6
+216,Volcano,Hawaii,3,village,736,48.9,2,5,0,–,–,–,0,1
+217,Lexington,Virginia,7,town,7802,48.9,8,5,3,30,0,0,451,2
+218,Floyd,Virginia,8,village,448,48.9,1,1,0,–,–,–,171,1
+219,McAdenville,North Carolina,8,village,936,48.9,1,0,0,–,–,–,93,11
+220,Valley City,North Dakota,2,town,6580,48.7,8,2,0,25,8,0,17,2
+221,Northfield,Minnesota,4,town,21316,48.6,9,1,2,–,–,–,61,1
+222,Guthrie,Oklahoma,1,town,11682,48.6,3,4,1,30,6.7,0,76,6
+223,Seneca Falls,New York,10,town,6809,48.4,1,1,0,–,–,–,354,6
+224,Ottawa,Illinois,3,town,18775,48.4,4,1,0,–,–,–,303,3
+225,Concord,Massachusetts,9,town,18092,48.2,3,1,1,–,–,–,49,4
+226,Cordova,Alaska,9,town,2413,48.2,4,1,0,–,–,–,5,2
+227,Smithfield,Virginia,9,town,9032,48.2,4,2,0,–,–,–,59,2
+228,Grafton,Vermont,9,village,49,48.1,0,1,0,–,–,–,129,6
+229,Shipshewana,Indiana,5,village,852,48.1,1,2,0,–,–,–,0,4
+230,Natchitoches,Louisiana,1,town,17165,48.1,3,18,0,37,5.4,0,409,13
+231,Huntsville,Utah,6,village,603,48.1,2,3,0,–,–,–,0,1
+232,Bangor,Maine,8,town,32446,48,4,1,1,–,–,–,119,3
+233,Garrison,North Dakota,3,town,1465,47.9,–,–,–,–,–,–,0,5
+234,Indiana,Pennsylvania,9,town,14294,47.8,5,0,0,–,–,–,96,4
+235,Marquette,Michigan,8,town,21845,47.7,7,1,1,–,–,–,4,3
+236,Silver City,New Mexico,4,town,9399,47.7,3,2,1,–,–,–,89,1
+237,Monticello,Illinois,4,town,6010,47.7,3,2,0,30,10,0,129,3
+238,Ligonier,Pennsylvania,10,town,1478,47.6,1,0,0,–,–,–,424,5
+239,Sheridan,Wyoming,4,town,19813,47.6,4,1,0,–,–,–,177,3
+240,Trinidad,California,8,village,321,47.5,2,1,0,–,–,–,2,1
+241,Odessa,Delaware,4,village,366,47.4,0,2,0,–,–,–,86,5
+242,St. Helena,California,9,town,5257,47.3,2,1,0,–,–,–,46,4
+243,Hulett,Wyoming,5,village,341,47.3,3,1,0,–,–,–,0,1
+244,Clarksdale,Mississippi,2,town,13861,47.2,2,4,0,–,–,–,535,1
+245,Venice,Florida,10,town,29902,47.2,1,2,0,–,–,–,769,4
+246,Berea,Kentucky,2,town,16436,47.1,6,2,0,–,–,–,0,4
+247,Bennington,Vermont,10,town,8795,47.1,0,5,1,–,–,–,190,3
+248,Milton,Delaware,5,town,3773,46.8,1,1,0,–,–,–,138,4
+249,Newberry,South Carolina,3,town,10874,46.8,3,0,1,20,10,0,264,2
+250,French Lick,Indiana,6,town,1753,46.7,1,2,0,–,–,–,11,3
+251,Sugarcreek,Ohio,3,town,2316,46.7,3,1,1,–,–,–,0,2
+252,Niantic,Connecticut,2,town,3194,46.7,2,3,1,–,–,–,0,2
+253,Stillwater,Minnesota,5,town,19386,46.7,1,2,0,–,–,–,59,7
+254,Mooresville,Alabama,3,village,47,46.6,–,–,–,–,–,–,0,4
+255,Peterborough,New Hampshire,8,town,3090,46.5,1,1,1,–,–,–,47,3
+256,Frenchtown,New Jersey,5,town,1495,46.4,3,0,0,–,–,–,401,1
+257,Baraboo,Wisconsin,7,town,13096,46.3,5,0,0,–,–,–,101,3
+258,Dubois,Wyoming,6,village,989,46.3,4,1,0,–,–,–,0,1
+259,Boulder City,Nevada,3,town,15029,45.9,3,7,1,–,–,–,0,2
+260,Bethlehem,New Hampshire,9,village,826,45.9,2,2,0,–,–,–,0,1
+261,Watch Hill,Rhode Island,6,village,212,45.9,0,2,0,–,–,–,177,3
+262,Stonington,Maine,9,town,1057,45.8,1,3,0,–,–,–,1,2
+263,Bethany Beach,Delaware,6,town,1083,45.8,3,1,1,30,6.7,0,1,4
+264,Snow Hill,Maryland,5,town,2243,45.7,1,2,0,–,–,–,9,3
+265,Bell Buckle,Tennessee,1,village,423,45.7,2,0,0,33,15.2,0,28,3
+266,Saratoga,Wyoming,7,town,1760,45.6,1,6,0,–,–,–,3,1
+267,Rocheport,Missouri,1,village,215,45.5,1,2,0,34,8.8,0,88,2
+268,Lanesboro,Minnesota,6,village,712,45.5,1,1,0,42,11.9,0,33,9
+269,Forest City,North Carolina,9,town,7397,45.5,1,0,1,–,–,–,207,5
+270,Hāna,Hawaii,4,town,1526,45.5,8,2,0,35,8.6,0,4,2
+271,Lovelock,Nevada,4,town,1823,45.5,1,2,0,–,–,–,3,3
+272,Aspen,Colorado,10,town,6556,45.4,0,3,0,–,–,–,11,11
+273,North Pole,Alaska,10,town,2505,45.4,1,1,0,–,–,–,0,10
+274,Charlevoix,Michigan,9,town,2332,45.4,0,3,2,–,–,–,43,3
+275,Hill City,South Dakota,3,village,937,45.3,1,2,0,–,–,–,10,1
+276,Gardnerville,Nevada,5,town,6211,45.2,3,1,0,–,–,–,6,3
+277,Jonesborough,Tennessee,2,town,6746,45.1,3,0,0,35,14.3,0,41,6
+278,Leonardtown,Maryland,6,town,5041,45.1,4,0,1,–,–,–,2,3
+279,Washington,Georgia,4,town,3623,45,1,1,0,–,–,–,563,2
+280,Stockbridge,Massachusetts,10,town,1986,45,0,1,0,–,–,–,147,6
+281,Red Cloud,Nebraska,3,village,938,44.8,1,1,0,23,4.3,0,112,3
+282,Bay St. Louis,Mississippi,3,town,10526,44.8,1,3,0,–,–,–,1052,1
+283,Santa Rosa,New Mexico,5,town,2824,44.7,1,4,0,–,–,–,6,2
+284,Eureka,Nevada,6,village,414,44.6,0,5,0,–,–,–,18,3
+285,St. Francisville,Louisiana,2,town,1484,44.6,2,2,2,39,7.7,0,70,3
+286,Big Sky,Montana,7,town,3591,44.4,3,1,0,–,–,–,0,3
+287,Litchfield,Connecticut,3,town,1211,44.4,1,0,0,25,12,0,477,2
+288,Oakland,Maryland,7,town,1813,44.4,0,5,0,–,–,–,175,2
+289,Custer,South Dakota,4,town,1829,44.4,3,9,0,40,10,0,6,2
+290,Logan,Ohio,4,town,7142,44.3,1,2,0,–,–,–,293,2
+291,Madrid,New Mexico,6,village,247,44.2,1,0,0,–,–,–,129,2
+292,McCall,Idaho,3,town,4104,44.2,0,3,0,–,–,–,9,6
+293,Mentone,Alabama,4,village,334,44.1,1,0,0,–,–,–,0,7
+294,Fredericksburg,Texas,5,town,11766,44.1,3,7,0,41,4.9,0,367,27
+295,Narragansett,Rhode Island,7,town,14407,44.1,1,1,0,–,–,–,78,5
+296,Chadron,Nebraska,4,town,5094,44.1,3,1,0,31,9.7,0,47,4
+297,Madison,Georgia,5,town,5131,43.8,0,1,0,–,–,–,361,5
+298,Siloam Springs,Arkansas,3,town,20075,43.6,4,1,0,33,15.2,0,73,2
+299,Peninsula,Ohio,5,village,517,43.6,2,0,0,30,13.3,0,33,2
+300,Genoa,Nevada,7,town,1343,43.5,0,1,0,–,–,–,30,7
+301,Dripping Springs,Texas,6,town,10165,43.5,3,0,0,–,–,–,23,4
+302,Senoia,Georgia,6,town,6101,43.5,1,1,0,–,–,–,151,3
+303,Bonners Ferry,Idaho,4,town,2788,43.5,2,0,1,–,–,–,4,3
+304,Kennebunk,Maine,10,town,5776,43.5,1,1,0,–,–,–,123,3
+305,Allentown,New Jersey,6,town,1731,43.4,2,0,0,–,–,–,220,1
+306,Metamora,Indiana,7,village,207,43.2,0,1,0,–,–,–,116,3
+307,Salmon,Idaho,5,town,3257,43.2,2,2,0,41,14.6,0,8,3
+308,Lindsborg,Kansas,4,town,3835,43.1,1,0,0,–,–,–,15,11
+309,Plymouth,New Hampshire,10,town,4730,43,2,0,2,–,–,–,5,3
+310,Granbury,Texas,7,town,12934,42.9,3,1,2,–,–,–,0,3
+311,Leavenworth,Kansas,5,town,37370,42.9,1,2,0,–,–,–,120,3
+312,Abilene,Kansas,6,town,6501,42.8,1,0,1,–,–,–,32,5
+313,Corydon,Indiana,8,town,3153,42.8,1,1,1,39,10.3,0,470,4
+314,Madison,Connecticut,4,town,17688,42.7,4,0,1,–,–,–,43,2
+315,Winterset,Iowa,3,town,5421,42.7,3,0,1,32,9.4,0,93,4
+316,Beaufort,North Carolina,10,town,4895,42.6,1,0,0,–,–,–,18,10
+317,Johnson City,Texas,8,town,2092,42.5,1,0,0,–,–,–,54,4
+318,Harmony,Pennsylvania,11,village,918,42.5,3,0,0,–,–,–,11,1
+319,Maysville,Kentucky,3,town,8711,42.4,0,2,0,–,–,–,315,3
+320,Vicksburg,Mississippi,4,town,20032,42.4,1,3,0,–,–,–,357,1
+321,Gadsden,Alabama,5,town,33086,42.3,1,1,0,–,–,–,82,4
+322,Greeneville,Tennessee,3,town,15979,42.3,2,1,0,–,–,–,40,3
+323,Yankton,South Dakota,5,town,15670,42.3,1,2,0,–,–,–,216,2
+324,Dell Rapids,South Dakota,6,town,3825,42.2,1,1,0,–,–,–,95,2
+325,Stanley,Idaho,6,village,122,42.1,0,4,0,–,–,–,1,3
+326,Spring City,Utah,7,town,1026,42.1,1,1,0,–,–,–,1,2
+327,McGregor,Iowa,4,village,725,42.1,0,1,1,–,–,–,23,3
+328,Wailuku,Hawaii,5,town,17697,42.1,4,1,0,–,–,–,10,2
+329,Paris,Tennessee,4,town,10517,42,1,0,0,–,–,–,109,5
+330,Chippewa Falls,Wisconsin,8,town,15075,42,2,0,0,–,–,–,177,3
+331,Lander,Wyoming,8,town,7451,41.9,3,1,0,–,–,–,21,1
+332,Hawi,Hawaii,6,town,2268,41.9,2,1,0,–,–,–,0,2
+333,Broken Bow,Oklahoma,2,town,4227,41.8,2,3,0,–,–,–,0,1
+334,Wimberley,Texas,9,town,2889,41.8,5,2,0,40,0,0,45,8
+335,Marietta,Ohio,6,town,13039,41.8,1,0,0,–,–,–,2075,3
+336,Ketchum,Idaho,7,town,3609,41.8,1,1,0,–,–,–,0,5
+337,Atchison,Kansas,7,town,10813,41.6,1,0,1,–,–,–,22,5
+338,Abita Springs,Louisiana,3,town,2752,41.5,1,1,0,–,–,–,0,4
+339,Haleʻiwa,Hawaii,7,town,4941,41.5,6,0,0,–,–,–,0,2
+340,Spring Lake,New Jersey,7,town,2781,41.4,0,4,0,–,–,–,7,3
+341,Smyrna,Delaware,7,town,13326,41.4,2,0,0,–,–,–,476,2
+342,Thomas,West Virginia,9,village,593,41.4,1,0,0,–,–,–,49,2
+343,Lake Geneva,Wisconsin,9,town,8691,41.3,0,4,0,–,–,–,25,3
+344,Jekyll Island,Georgia,7,village,866,41.2,1,0,0,–,–,–,12,3
+345,Leesville,Louisiana,4,town,5339,41.2,3,0,0,–,–,–,26,2
+346,Georgetown,South Carolina,4,town,8821,41.1,1,2,0,–,–,–,52,2
+347,Garden City,Utah,8,village,732,41.1,3,0,0,–,–,–,0,2
+348,Ely,Nevada,8,town,3892,41.1,0,1,0,–,–,–,89,4
+349,Hailey,Idaho,8,town,9976,41,3,1,0,–,–,–,0,3
+350,Sister Bay,Wisconsin,10,town,1170,40.9,0,4,0,–,–,–,1,3
+351,Thermopolis,Wyoming,9,town,2748,40.9,4,5,0,39,7.7,0,17,1
+352,White Sulphur Springs,West Virginia,10,town,2154,40.8,0,1,0,–,–,–,44,4
+353,Valentine,Nebraska,5,town,2642,40.5,0,1,0,–,–,–,4,6
+354,Lānaʻi City,Hawaii,8,town,3332,40.5,2,1,0,–,–,–,0,2
+355,Norton,Kansas,8,town,2681,40.4,0,1,0,–,–,–,43,4
+356,Port Gibson,Mississippi,5,town,1166,40.4,1,0,0,–,–,–,207,1
+357,Keystone,South Dakota,7,village,261,40.3,1,6,0,36,5.6,0,8,2
+358,Essex,Connecticut,5,town,6847,40.3,1,0,0,–,–,–,4,7
+359,Makawao,Hawaii,9,town,7297,40.3,4,0,0,–,–,–,3,2
+360,Grand Marais,Minnesota,7,town,1306,40.3,0,5,0,–,–,–,0,3
+361,Boonville,Missouri,2,town,7863,40.3,1,3,0,–,–,–,3,2
+362,Medicine Park,Oklahoma,3,village,474,40.2,1,2,1,35,2.9,0,2,4
+363,Waynesville,Ohio,7,town,2862,40.2,0,1,0,–,–,–,106,3
+364,Jamestown,North Dakota,4,town,15789,40.2,0,1,0,28,17.9,0,105,2
+365,Tahlequah,Oklahoma,4,town,17319,40.1,3,0,1,–,–,–,15,2
+366,Breckenridge,Colorado,11,town,4892,40,0,1,0,–,–,–,1,15
+367,Mount Pleasant,Utah,9,town,3935,40,1,1,0,–,–,–,74,1
+368,Sun Valley,Idaho,9,town,1771,40,0,3,0,–,–,–,0,4
+369,Covington,Louisiana,5,town,11686,40,3,3,0,34,5.9,0,173,3
+370,Glendive,Montana,8,town,4760,39.9,1,1,0,–,–,–,39,2
+371,Santa Claus,Indiana,9,town,2657,39.9,0,1,0,–,–,–,0,14
+372,Rockton,Illinois,5,town,7861,39.9,1,0,1,–,–,–,166,2
+373,El Dorado,Arkansas,4,town,16657,39.7,1,0,0,–,–,–,234,3
+374,Boonsboro,Maryland,8,town,3850,39.7,0,1,0,–,–,–,545,2
+375,Lindstrom,Minnesota,8,town,5026,39.6,2,0,1,–,–,–,3,2
+376,Hot Springs,Arkansas,5,town,37971,39.5,0,1,0,–,–,–,330,3
+377,Clarksville,Missouri,3,village,376,39.5,0,1,0,–,–,–,71,2
+378,Townsend,Tennessee,5,village,628,39.4,0,2,0,–,–,–,1,3
+379,Okoboji,Iowa,5,village,729,39.3,0,3,0,–,–,–,0,3
+380,Bigfork,Montana,9,town,5118,39.2,1,3,0,–,–,–,0,2
+381,Elsah,Illinois,6,village,519,39.2,0,1,0,–,–,–,72,2
+382,Tucumcari,New Mexico,7,town,5058,39.2,0,6,0,–,–,–,4,2
+383,Buffalo,Wyoming,10,town,4655,39.2,0,7,0,–,–,–,11,1
+384,Woodstock,Illinois,7,town,25892,39.1,5,1,2,33,3,0,71,5
+385,Barryville,New York,11,village,222,39,0,1,0,–,–,–,3,3
+386,Cambridge,Ohio,8,town,10036,39,2,0,0,–,–,–,73,2
+387,Natchez,Mississippi,6,town,14233,39,0,1,0,38,10.5,0,895,9
+388,Pawleys Island,South Carolina,5,village,134,39,0,2,0,–,–,–,12,1
+389,Marshall,Texas,10,town,24263,39,1,1,0,–,–,–,27,3
+390,Chestertown,Maryland,9,town,5702,38.9,0,1,0,–,–,–,441,2
+391,Minden,Nevada,9,town,3442,38.9,1,1,0,–,–,–,0,3
+392,Old Saybrook,Connecticut,6,town,10689,38.9,1,0,1,–,–,–,28,3
+393,Arcola,Illinois,8,town,2915,38.6,1,1,0,–,–,–,1,2
+394,Washington,Connecticut,7,town,3721,38.6,0,1,0,–,–,–,57,3
+395,Mosier,Oregon,11,village,466,38.6,1,0,0,–,–,–,2,2
+396,Wickenburg,Arizona,7,town,8301,38.5,1,2,0,–,–,–,0,3
+397,Walhalla,South Carolina,6,town,4249,38.5,2,0,0,–,–,–,9,2
+398,Mammoth Lakes,California,10,town,7124,38.5,0,3,0,–,–,–,0,4
+399,Hershey,Pennsylvania,12,town,13858,38.4,1,1,0,–,–,–,1,4
+400,Seward,Nebraska,6,town,7752,38.4,1,0,0,–,–,–,65,3
+401,Princeton,Illinois,9,town,7667,38.3,1,0,1,–,–,–,60,2
+402,Dayton,Tennessee,6,town,7796,38.1,2,0,0,–,–,–,2,3
+403,Wabasha,Minnesota,9,town,2598,38.1,1,0,0,–,–,–,58,2
+404,Pella,Iowa,6,town,10965,38,10,0,1,39,0,0,63,7
+405,Farmville,Virginia,10,town,7578,37.9,0,1,0,–,–,–,291,2
+406,Gulf Shores,Alabama,6,town,17431,37.9,2,0,0,–,–,–,0,5
+407,Nevada City,California,11,town,3195,37.8,1,0,0,–,–,–,0,5
+408,Sulphur,Oklahoma,5,town,4844,37.7,1,0,0,–,–,–,22,3
+409,Clear Lake,Iowa,7,town,7602,37.6,1,1,0,–,–,–,1,3
+410,Aurora,Nebraska,7,town,4715,37.5,0,1,0,–,–,–,5,4
+411,Kent,Connecticut,8,town,3084,37.4,3,4,1,30,0,0,0,2
+412,Hanalei,Hawaii,10,village,444,37.4,2,1,0,32,0,0,10,3
+413,Ocean Springs,Mississippi,7,town,18954,37.4,2,2,0,–,–,–,0,2
+414,Patagonia,Arizona,8,village,796,37.2,0,1,0,–,–,–,0,4
+415,Greensboro,Georgia,8,town,3573,37.1,0,1,0,–,–,–,78,2
+416,Chester,Connecticut,9,town,3748,37.1,1,0,1,–,–,–,4,2
+417,Grand Rivers,Kentucky,4,village,345,37.1,1,0,0,–,–,–,1,1
+418,Hartsville,South Carolina,7,town,7360,36.9,1,0,0,–,–,–,88,2
+419,Minden,Nebraska,8,town,3116,36.9,0,1,0,–,–,–,0,5
+420,Thomasville,Georgia,9,town,18604,36.8,3,0,1,30,3.3,0,1038,3
+421,Norfolk,Connecticut,10,village,551,36.8,0,1,0,–,–,–,43,1
+422,Oberlin,Ohio,9,town,8587,36.7,4,1,1,38,7.9,0,38,2
+423,Fulton,Illinois,10,town,3581,36.6,1,0,0,–,–,–,33,2
+424,Deerfield,Massachusetts,11,village,479,36.5,0,1,0,–,–,–,30,1
+425,Fairhope,Alabama,7,town,26044,36.4,3,1,1,51,5.9,0,204,10
+426,Ketchikan,Alaska,11,town,8033,36.2,2,0,0,–,–,–,0,3
+427,Hohenwald,Tennessee,7,town,4136,35.9,1,0,0,–,–,–,2,3
+428,Tuscumbia,Alabama,8,town,9222,35.9,1,0,0,–,–,–,1,4
+429,Pikeville,Kentucky,5,town,7366,35.9,0,1,0,–,–,–,70,2
+430,Chester,New Jersey,8,town,1695,35.8,1,0,0,–,–,–,2,2
+431,Paris,Arkansas,6,town,3306,35.8,1,0,0,–,–,–,46,1
+432,Breaux Bridge,Louisiana,6,town,7582,35.7,0,1,0,–,–,–,0,5
+433,Minden,Louisiana,7,town,11195,35.7,1,2,0,–,–,–,0,2
+434,Gig Harbor,Washington,10,town,12643,35.7,1,0,0,–,–,–,0,5
+435,Sugar Hill,New Hampshire,11,village,683,35.7,0,1,0,–,–,–,0,3
+436,Batesville,Arkansas,7,town,11539,35.6,1,0,0,–,–,–,142,1
+437,Bolivar,Missouri,4,town,11549,35.5,2,0,1,–,–,–,0,2
+438,Devils Lake,North Dakota,5,town,7314,35.4,0,1,0,–,–,–,46,2
+439,Sturgis,South Dakota,8,town,7014,35.4,0,1,0,–,–,–,46,2
+440,Seldovia,Alaska,12,village,250,35.3,0,2,0,–,–,–,0,1
+441,Eufaula,Oklahoma,6,town,2872,35.2,1,0,0,–,–,–,23,1
+442,Alliance,Nebraska,9,town,8071,35.1,0,1,0,–,–,–,45,2
+443,Farmington,Missouri,5,town,19165,35,1,0,0,–,–,–,45,2
+444,Big Spring,Texas,11,town,22541,35,1,1,0,–,–,–,0,3
+445,Hermann,Missouri,6,town,2192,35,0,5,1,37,2.7,0,373,3
+446,Woodstock,Virginia,11,town,5954,34.9,1,0,1,–,–,–,1,2
+447,Fort Scott,Kansas,9,town,7563,34.8,0,1,0,–,–,–,3,3
+448,Florence,Oregon,12,town,9504,34.7,1,0,0,–,–,–,0,4
+449,Lisbon,North Dakota,6,town,2175,34.6,0,1,0,–,–,–,4,2
+450,York,South Carolina,8,town,9830,34.5,1,0,1,–,–,–,2,2
+451,Danville,Kentucky,6,town,17562,34.5,2,0,1,37,8.1,0,347,3
+452,Aztec,New Mexico,8,town,6129,34.3,0,1,0,–,–,–,59,1
+453,Walhalla,North Dakota,7,village,867,34.3,0,1,0,–,–,–,1,2
+454,Ruidoso,New Mexico,9,town,7640,34.3,1,1,0,–,–,–,0,2
+455,Kingfield,Maine,11,village,640,34.2,0,1,0,–,–,–,3,1
+456,Georgetown,Delaware,8,town,8098,34.1,0,1,0,–,–,–,21,2
+457,Cookeville,Tennessee,8,town,37102,34,8,0,1,40,7.5,0,6,4
+458,Elkhorn City,Kentucky,7,village,978,33.9,1,0,0,–,–,–,0,1
+459,Koloa,Hawaii,11,town,2231,33.2,1,0,0,–,–,–,1,1
+460,Davis,Oklahoma,7,town,2831,33.1,0,1,0,–,–,–,1,2
+461,Mountain View,Arkansas,8,town,2950,33.1,0,1,0,–,–,–,1,2
+462,Le Claire,Iowa,8,town,4776,33,1,0,0,–,–,–,1,2
+463,Fort Benton,Montana,10,town,1422,32.7,0,1,0,–,–,–,0,2
+464,Hodgenville,Kentucky,8,town,3379,32.5,1,0,0,–,–,–,0,2
+465,Payson,Arizona,9,town,16762,32.2,0,1,0,–,–,–,0,3
+466,Green River,Wyoming,11,town,11474,32,1,1,0,–,–,–,0,1
+467,Landrum,South Carolina,9,town,2792,32,0,1,0,–,–,–,0,2
+468,Kimmswick,Missouri,7,village,131,31.5,1,0,0,38,5.3,0,44,3
+469,Kanab,Utah,10,town,5291,30.9,0,1,0,–,–,–,0,2
+470,Paducah,Kentucky,9,town,26712,30.6,3,2,0,41,2.4,0,322,3
+471,Mitchell,South Dakota,9,town,15621,30.4,1,0,0,–,–,–,0,2
+472,Fallon,Nevada,10,town,9647,30.2,4,3,0,44,0,0,80,2
+473,Pierre,South Dakota,10,town,13788,30.2,0,1,0,–,–,–,0,2
+474,Eufaula,Alabama,9,town,12363,27.3,1,0,0,35,2.9,0,749,3
+475,Arcadia,Oklahoma,8,village,176,24.2,1,0,0,32,0,0,3,1

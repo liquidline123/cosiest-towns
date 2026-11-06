@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canada&#x27;s Coziest Towns | Liquidline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red:#e30613; --black:#000604; --grey:#cac7c7; --muted:#5f5b5b; --track:#f2f1f1; --soft:#f7f6f6; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Poppins, Arial, sans-serif; color:var(--black); background:#fff; padding:16px; -webkit-font-smoothing:antialiased; }
+  .top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .tabs { display:inline-flex; gap:4px; padding:4px; border:1px solid var(--grey); border-radius:999px; }
+  .tabs button { font:500 14px Poppins, Arial, sans-serif; padding:6px 18px; border:0; border-radius:999px; background:none; cursor:pointer; color:var(--black); }
+  .tabs button[aria-pressed="true"] { background:var(--black); color:#fff; }
+  .seg { display:none; gap:2px; padding:3px; border:1px solid var(--grey); border-radius:999px; }
+  .seg.on { display:inline-flex; }
+  .seg button { font:500 13px Poppins, Arial, sans-serif; padding:5px 14px; border:0; border-radius:999px; background:none; cursor:pointer; color:var(--black); }
+  .seg button[aria-pressed="true"] { background:#eeeded; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; }
+  select { font:13px Poppins, Arial, sans-serif; padding:6px 28px 6px 12px; border:1px solid var(--grey); border-radius:999px; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23000604' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center; -webkit-appearance:none; appearance:none; color:var(--black); cursor:pointer; min-width:150px; max-width:100%; }
+  select:focus { outline:none; border-color:var(--black); }
+  .search { flex:1 1 180px; max-width:260px; position:relative; }
+  .search input { width:100%; font:14px Poppins, Arial, sans-serif; padding:8px 12px 8px 34px; border:1px solid var(--grey); border-radius:999px; outline:none; }
+  .search input:focus { border-color:var(--black); }
+  .search svg { position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--muted); }
+  h1 { font-family:Merriweather, Georgia, serif; font-size:clamp(19px,4vw,24px); font-weight:700; line-height:1.25; }
+  .sub { font-size:13.5px; color:var(--muted); margin:3px 0 10px; }
+  .layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:22px; align-items:start; }
+  ol { list-style:none; min-height:calc(10 * 44.5px); }
+  .row { width:100%; display:grid; grid-template-columns:30px minmax(120px,38%) 1fr 38px; align-items:center; column-gap:10px;
+         padding:6px 6px 6px 2px; border:0; border-radius:6px; background:none; cursor:pointer; text-align:left; font:inherit; color:inherit; }
+  .row:hover { background:var(--soft); }
+  .row[aria-current="true"] { background:var(--soft); box-shadow:inset 3px 0 0 var(--black); }
+  .row:focus-visible { outline:2px solid var(--red); outline-offset:-2px; }
+  li + li { margin-top:1px; }
+  .rank { font-size:13.5px; font-weight:500; color:var(--muted); text-align:right; }
+  .name { display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+  .name strong { font-size:14.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .area { font-size:11.5px; color:var(--muted); }
+  .track { height:8px; background:var(--track); border-radius:0 4px 4px 0; }
+  .bar { display:block; height:100%; background:var(--grey); border-radius:0 4px 4px 0; }
+  .intro .bar { animation:grow .7s ease-out both; }
+  @keyframes grow { from { width:0; } }
+  @media (prefers-reduced-motion: reduce) { .intro .bar { animation:none; } }
+  .score { font-size:14px; font-weight:700; text-align:right; }
+  .win .bar { background:var(--red); } .win .rank, .win .name strong { color:var(--red); font-weight:700; }
+  .row.win { background:rgba(227,6,19,.05); }
+  .row.win[aria-current="true"] { background:rgba(227,6,19,.08); }
+  .tag { display:inline-block; font-size:10.5px; font-weight:700; color:var(--red); border:1px solid var(--red); border-radius:999px; padding:0 6px; margin-left:6px; vertical-align:2px; letter-spacing:.02em; }
+  .pager { display:flex; align-items:center; justify-content:space-between; margin-top:10px; font-size:13px; }
+  .pager button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--grey); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .pager button:disabled { opacity:.35; cursor:default; }
+  .pager span { color:var(--muted); }
+  .empty { font-size:14px; color:var(--muted); padding:20px 4px; }
+  .card { background:var(--soft); border-radius:12px; padding:18px; }
+  .card .kicker { font-size:12px; font-weight:500; color:var(--muted); }
+  .card h2 { font-family:Merriweather, Georgia, serif; font-size:22px; font-weight:700; line-height:1.25; margin-top:2px; }
+  .card .big { display:flex; align-items:baseline; gap:6px; margin-top:6px; }
+  .card .big b { font-size:34px; font-weight:700; color:var(--red); line-height:1; }
+  .card .big span { font-size:13px; color:var(--muted); }
+  blockquote + blockquote { margin-top:10px; }
+  .quotes { margin-top:16px; background:rgba(227,6,19,.05); border-radius:10px; padding:12px 14px; }
+  blockquote { font-family:Merriweather, Georgia, serif; font-style:italic; font-size:16.5px; line-height:1.5; }
+  .who { font-size:12px; color:var(--muted); margin-top:6px; }
+  .stats { list-style:none; margin-top:16px; }
+  .stats li { font-size:14px; line-height:1.45; padding-left:16px; position:relative; }
+  .stats li + li { margin-top:8px; }
+  .stats li::before { content:""; position:absolute; left:1px; top:.55em; width:7px; height:7px; border-radius:50%; background:var(--red); }
+  .close { display:none; position:absolute; top:8px; right:10px; width:34px; height:34px; border:0; border-radius:50%; background:#fff; font-size:22px; line-height:1; cursor:pointer; color:var(--black); }
+  .layout { position:relative; }
+  .tools { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tools button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--black); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .tools button:hover { background:var(--soft); }
+  .status { font-size:12px; color:var(--muted); align-self:center; }
+  .embed { display:none; position:absolute; left:0; right:0; bottom:0; z-index:6; background:#fff; border:1px solid var(--grey); border-radius:12px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+  .embed.open { display:block; }
+  .embed p { font-size:13px; margin-bottom:8px; }
+  .embed textarea { width:100%; height:120px; font:12px/1.4 ui-monospace, Menlo, Consolas, monospace; border:1px solid var(--grey); border-radius:8px; padding:8px; resize:none; }
+  .embed .row2 { display:flex; gap:8px; margin-top:8px; }
+  .embed .row2 button { font:500 13px Poppins, Arial, sans-serif; background:none; border:0; border-bottom:1px solid var(--black); padding:0 0 1px; cursor:pointer; color:var(--black); }
+  .shot { position:absolute; left:-12000px; top:0; width:800px; background:#fff; padding:32px; }
+  .shot h1 { font-size:30px; } .shot .sub { font-size:15px; margin-bottom:16px; }
+  .shot .srow { display:grid; grid-template-columns:34px 260px 1fr 56px; align-items:center; column-gap:14px; padding:7px 0; border-top:1px solid #eeeded; }
+  .shot .srow .rank, .shot .srow .score { font-size:16px; } .shot .srow strong { font-size:17px; font-weight:500; } .shot .srow .area { font-size:13px; }
+  .shot .srow .track { height:10px; } .shot .win { background:rgba(227,6,19,.05); }
+  .shot .sfoot { font-size:13px; color:var(--muted); margin-top:16px; }
+  .shot .sfoot b { color:var(--black); }
+  .foot { font-size:12px; color:var(--muted); margin-top:14px; }
+  .foot b { color:var(--black); font-weight:500; }
+  .foot a.src { color:inherit; }
+  @media (max-width:700px) { .layout { grid-template-columns:1fr; }
+    .card { display:none; position:absolute; left:0; right:0; z-index:5; padding-top:20px; box-shadow:0 10px 30px rgba(0,0,0,.18); background:#fff; border:1px solid var(--grey); }
+    .card.open { display:block; } .close { display:block; } .card .kicker { padding-right:34px; } .search { max-width:none; } .filters { width:100%; } .filters select { flex:1 1 0; min-width:0; } }
+  @media (max-width:480px) { .filters select { flex:1 1 100%; } }
+  @media (max-width:420px) { .row { grid-template-columns:24px minmax(110px,44%) 1fr 34px; column-gap:8px; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs" role="group" aria-label="Choose state winners or all towns">
+      <button type="button" data-k="town" aria-pressed="true">State winners</button>
+      <button type="button" data-k="village" aria-pressed="false">All towns</button>
+    </div>
+    <div class="filters">
+      <div class="seg" id="seg" role="group" aria-label="Sort the state winners"><button type="button" data-s="rank" aria-pressed="true">Ranked</button><button type="button" data-s="az" aria-pressed="false">A to Z by state</button></div>
+      <select id="nation" aria-label="Choose a province"></select>
+      <select id="area" aria-label="Choose an area"></select>
+    </div>
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" placeholder="Find a town" aria-label="Find a town" autocomplete="off"></label>
+  </div>
+  <div class="layout">
+    <div>
+      <h1 id="title"></h1>
+      <p class="sub" id="sub"></p>
+      <ol id="list"></ol>
+      <div class="pager"><button type="button" id="prev">‹ Previous</button><span id="pageinfo"></span><button type="button" id="next">Next ›</button></div>
+    </div>
+    <aside class="card" id="card" aria-live="polite"></aside>
+    <div class="embed" id="embedBox" role="dialog" aria-label="Embed this chart"><p>Copy this code and paste it into your page. It opens on the view you&#x27;re looking at now.</p><textarea id="embedCode" readonly></textarea>
+      <div class="row2"><button type="button" class="more" id="copyBtn">Copy code</button><button type="button" class="more" id="embedClose">Close</button></div></div>
+  </div>
+  <div class="tools" data-no-capture><button type="button" id="embedBtn" aria-expanded="false">Embed this chart</button><button type="button" id="dlBtn">Download image</button><span class="status" id="status" role="status"></span></div>
+  <p class="foot">How we scored: cozy reviews, coffee shops and tea rooms, fireplaces, places to stay, bookstores, historic buildings and press lists.</p>
+  <p class="foot">Source: <a class="src" href="https://liquidline.co.uk/news/cosiest-towns/#canada" target="_blank" rel="noopener"><b>Liquidline</b></a>, coziest towns study, November 2026. Full study: <a style="white-space:nowrap" class="src" href="https://liquidline.co.uk/news/cosiest-towns/#canada" target="_blank" rel="noopener">liquidline.co.uk/news/cosiest-towns/#canada</a></p>
+  <noscript><p class="foot">Turn on JavaScript to explore every place.</p></noscript>
+<script>
+(function(){
+  var D = [{"k":"town","n":"Lunenburg","c":"Nova Scotia","s":87.1,"na":"Nova Scotia","nr":1,"cr":1,"q":["Cozy Inn near everything in Lunenburg."],"st":["Canada's coziest town.","Named in 10 press lists of charming and Christmas towns.","More buildings on the national historic register near the center than 9 in 10 places in the study.","2 independent bookstores within a short walk of the center."],"r":1},{"k":"town","n":"Saint Andrews","c":"New Brunswick","s":83.3,"na":"New Brunswick","nr":1,"cr":1,"q":["This charming hotel was in a perfect location."],"st":["New Brunswick's coziest town.","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study.","More buildings on the national historic register near the center than 9 in 10 places in the study."],"r":2},{"k":"town","n":"Ucluelet","c":"British Columbia","s":73.8,"na":"British Columbia","nr":1,"cr":1,"q":["What a quaint boutique inn very close to everything in Ukee!"],"st":["British Columbia's coziest town.","Five times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."],"r":3},{"k":"town","n":"Kamouraska","c":"Quebec","s":73.2,"na":"Quebec","nr":1,"cr":1,"q":["Charmant café. Le personnel est sympathique et attentionné. (Charming café. The staff are friendly and attentive.)"],"st":["Quebec's coziest village.","The second coziest reviews of any place in the study. Over 2 in 10 of its reviews use words like cozy, charming or welcoming."],"r":4},{"k":"town","n":"Banff","c":"Alberta","s":68.7,"na":"Alberta","nr":1,"cr":1,"q":["The hotel is well located, and has a nice historic feel."],"st":["Alberta's coziest town.","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study.","Named in 9 press lists of charming and Christmas towns."],"r":5},{"k":"town","n":"Stratford","c":"Ontario","s":67.9,"na":"Ontario","nr":1,"cr":1,"q":[],"st":["Ontario's coziest town.","Named in 9 press lists of charming and Christmas towns.","More buildings on the national historic register near the center than 9 in 10 places in the study.","7 independent coffee shops, bakeries and tea rooms within a short walk of the center."],"r":6},{"k":"town","n":"Churchill","c":"Manitoba","s":67.5,"na":"Manitoba","nr":1,"cr":1,"q":["Loved how cozy and homey the lodge was."],"st":["Manitoba's coziest village."],"r":7},{"k":"town","n":"Val Marie","c":"Saskatchewan","s":57.2,"na":"Saskatchewan","nr":1,"cr":1,"q":["The interior has the charm of an old SW hotel."],"st":["Saskatchewan's coziest village."],"r":8},{"k":"town","n":"Dawson City","c":"Yukon (the North)","s":52.8,"na":"The North","nr":1,"cr":1,"q":["Cozy and friendly atmosphere."],"st":["The coziest town in the North (Yukon, Northwest Territories and Nunavut).","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."],"r":9},{"k":"town","n":"Souris","c":"Prince Edward Island","s":52.1,"na":"Prince Edward Island","nr":1,"cr":1,"q":["Cafe is cute and cosy."],"st":["Prince Edward Island's coziest town."],"r":10},{"k":"town","n":"Brigus","c":"Newfoundland and Labrador","s":50.9,"na":"Newfoundland and Labrador","nr":1,"cr":1,"q":["Highly recommend this restaurant and this quaint village."],"st":["Newfoundland and Labrador's coziest village.","Seven times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."],"r":11},{"k":"village","r":1,"n":"Lunenburg","c":"Nova Scotia","s":87.1,"na":"Nova Scotia","nr":1,"cr":1,"q":["Cozy Inn near everything in Lunenburg."],"st":["Canada's coziest town.","Named in 10 press lists of charming and Christmas towns.","More buildings on the national historic register near the center than 9 in 10 places in the study.","2 independent bookstores within a short walk of the center."]},{"k":"village","r":2,"n":"Saint Andrews","c":"New Brunswick","s":83.3,"na":"New Brunswick","nr":1,"cr":1,"q":["This charming hotel was in a perfect location."],"st":["New Brunswick's coziest town.","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study.","More buildings on the national historic register near the center than 9 in 10 places in the study."]},{"k":"village","r":3,"n":"Ucluelet","c":"British Columbia","s":73.8,"na":"British Columbia","nr":1,"cr":1,"q":["What a quaint boutique inn very close to everything in Ukee!"],"st":["British Columbia's coziest town.","Five times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":4,"n":"Kamouraska","c":"Quebec","s":73.2,"na":"Quebec","nr":1,"cr":1,"q":["Charmant café. Le personnel est sympathique et attentionné. (Charming café. The staff are friendly and attentive.)"],"st":["Quebec's coziest village.","The second coziest reviews of any place in the study. Over 2 in 10 of its reviews use words like cozy, charming or welcoming."]},{"k":"village","r":5,"n":"Banff","c":"Alberta","s":68.7,"na":"Alberta","nr":1,"cr":1,"q":["The hotel is well located, and has a nice historic feel."],"st":["Alberta's coziest town.","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study.","Named in 9 press lists of charming and Christmas towns."]},{"k":"village","r":6,"n":"Stratford","c":"Ontario","s":67.9,"na":"Ontario","nr":1,"cr":1,"q":[],"st":["Ontario's coziest town.","Named in 9 press lists of charming and Christmas towns.","More buildings on the national historic register near the center than 9 in 10 places in the study.","7 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":7,"n":"Churchill","c":"Manitoba","s":67.5,"na":"Manitoba","nr":1,"cr":1,"q":["Loved how cozy and homey the lodge was."],"st":["Manitoba's coziest village."]},{"k":"village","r":null,"n":"Canmore","c":"Alberta","s":64.2,"na":"Alberta","nr":2,"cr":2,"q":[],"st":["18 independent coffee shops, bakeries and tea rooms within a short walk of the center.","2 independent bookstores within a short walk of the center."]},{"k":"village","r":null,"n":"Jasper","c":"Alberta","s":62.9,"na":"Alberta","nr":3,"cr":3,"q":["Sip your coffee slow and easy in a cozy and comfortable setting."],"st":["Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Perth","c":"Ontario","s":62.2,"na":"Ontario","nr":2,"cr":2,"q":["Really charming inside surrounded by historic Perth main street."],"st":["Named in 9 press lists of charming and Christmas towns.","3 independent bookstores within a short walk of the center."]},{"k":"village","r":null,"n":"Annapolis Royal","c":"Nova Scotia","s":61.5,"na":"Nova Scotia","nr":2,"cr":2,"q":["The restaurant is quaint and very much styled as a European bakery."],"st":["More buildings on the national historic register near the center than 9 in 10 places in the study.","6 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Whistler","c":"British Columbia","s":61.3,"na":"British Columbia","nr":2,"cr":2,"q":[],"st":["9 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Baddeck","c":"Nova Scotia","s":60.7,"na":"Nova Scotia","nr":3,"cr":3,"q":[],"st":["Three times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Niagara-on-the-Lake","c":"Ontario","s":58.9,"na":"Ontario","nr":3,"cr":3,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place."]},{"k":"village","r":null,"n":"Port Hope","c":"Ontario","s":58.8,"na":"Ontario","nr":4,"cr":4,"q":[],"st":["More buildings on the national historic register near the center than 9 in 10 places in the study.","6 independent coffee shops, bakeries and tea rooms within a short walk of the center.","2 independent bookstores within a short walk of the center."]},{"k":"village","r":null,"n":"Baie-Saint-Paul","c":"Quebec","s":58.7,"na":"Quebec","nr":2,"cr":2,"q":["Super café : petit mais accueillant. (Great café: small but welcoming.)"],"st":["6 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Yarmouth","c":"Nova Scotia","s":58.5,"na":"Nova Scotia","nr":4,"cr":4,"q":[],"st":["More buildings on the national historic register near the center than 9 in 10 places in the study.","6 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Harrison Hot Springs","c":"British Columbia","s":58.3,"na":"British Columbia","nr":3,"cr":3,"q":[],"st":["12 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Lake Louise","c":"Alberta","s":58.2,"na":"Alberta","nr":4,"cr":4,"q":[],"st":["Five times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Almonte","c":"Ontario","s":57.8,"na":"Ontario","nr":5,"cr":5,"q":[],"st":["Named in 9 press lists of charming and Christmas towns.","5 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":8,"n":"Val Marie","c":"Saskatchewan","s":57.2,"na":"Saskatchewan","nr":1,"cr":1,"q":["The interior has the charm of an old SW hotel."],"st":["Saskatchewan's coziest village."]},{"k":"village","r":null,"n":"Revelstoke","c":"British Columbia","s":57.1,"na":"British Columbia","nr":4,"cr":4,"q":[],"st":["6 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Brockville","c":"Ontario","s":57.0,"na":"Ontario","nr":6,"cr":6,"q":[],"st":["8 independent coffee shops, bakeries and tea rooms within a short walk of the center.","3 independent bookstores within a short walk of the center."]},{"k":"village","r":null,"n":"Elora","c":"Ontario","s":56.4,"na":"Ontario","nr":7,"cr":7,"q":[],"st":["Named in 9 press lists of charming and Christmas towns.","8 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Picton","c":"Ontario","s":55.6,"na":"Ontario","nr":8,"cr":8,"q":[],"st":["6 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Fort Macleod","c":"Alberta","s":54.5,"na":"Alberta","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Tofino","c":"British Columbia","s":54.4,"na":"British Columbia","nr":5,"cr":5,"q":["The staff were friendly and warm throughout."],"st":["Four times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Sussex","c":"New Brunswick","s":53.9,"na":"New Brunswick","nr":2,"cr":2,"q":["Quaint little restaurant cozy and very clean."],"st":["The coziest reviews of any place in the study. Over 3 in 10 of its reviews use words like cozy, charming or welcoming."]},{"k":"village","r":null,"n":"North Hatley","c":"Quebec","s":53.1,"na":"Quebec","nr":3,"cr":3,"q":[],"st":["Five times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":9,"n":"Dawson City","c":"Yukon (the North)","s":52.8,"na":"The North","nr":1,"cr":1,"q":["Cozy and friendly atmosphere."],"st":["The coziest town in the North (Yukon, Northwest Territories and Nunavut).","Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":10,"n":"Souris","c":"Prince Edward Island","s":52.1,"na":"Prince Edward Island","nr":1,"cr":1,"q":["Cafe is cute and cosy."],"st":["Prince Edward Island's coziest town."]},{"k":"village","r":null,"n":"Paris","c":"Ontario","s":50.9,"na":"Ontario","nr":9,"cr":9,"q":[],"st":["Named in 8 press lists of charming and Christmas towns."]},{"k":"village","r":11,"n":"Brigus","c":"Newfoundland and Labrador","s":50.9,"na":"Newfoundland and Labrador","nr":1,"cr":1,"q":["Highly recommend this restaurant and this quaint village."],"st":["Newfoundland and Labrador's coziest village.","Seven times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Wolfville","c":"Nova Scotia","s":50.7,"na":"Nova Scotia","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Fernie","c":"British Columbia","s":50.5,"na":"British Columbia","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Goderich","c":"Ontario","s":50.5,"na":"Ontario","nr":10,"cr":10,"q":[],"st":["Named in 8 press lists of charming and Christmas towns.","More buildings on the national historic register near the center than 9 in 10 places in the study."]},{"k":"village","r":null,"n":"Bragg Creek","c":"Alberta","s":50.3,"na":"Alberta","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Chester","c":"Nova Scotia","s":50.1,"na":"Nova Scotia","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Summerside","c":"Prince Edward Island","s":50.0,"na":"Prince Edward Island","nr":2,"cr":2,"q":[],"st":["More buildings on the national historic register near the center than 9 in 10 places in the study."]},{"k":"village","r":null,"n":"Saint-Sauveur","c":"Quebec","s":50.0,"na":"Quebec","nr":4,"cr":4,"q":[],"st":[]},{"k":"village","r":null,"n":"St. Martins","c":"New Brunswick","s":49.8,"na":"New Brunswick","nr":3,"cr":3,"q":[],"st":["Four times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Mahone Bay","c":"Nova Scotia","s":49.5,"na":"Nova Scotia","nr":7,"cr":7,"q":[],"st":["Three times as many coffee shops, bakeries and tea rooms per person as the typical place in the study.","Named in 10 press lists of charming and Christmas towns."]},{"k":"village","r":null,"n":"Montague","c":"Prince Edward Island","s":48.7,"na":"Prince Edward Island","nr":3,"cr":3,"q":["Friendly, welcoming and accommodating staff."],"st":[]},{"k":"village","r":null,"n":"Port Renfrew","c":"British Columbia","s":48.6,"na":"British Columbia","nr":7,"cr":7,"q":[],"st":["Four times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"St. Jacobs","c":"Ontario","s":48.3,"na":"Ontario","nr":11,"cr":11,"q":[],"st":[]},{"k":"village","r":null,"n":"Mont-Tremblant","c":"Quebec","s":48.2,"na":"Quebec","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Duncan","c":"British Columbia","s":48.2,"na":"British Columbia","nr":8,"cr":8,"q":[],"st":["8 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Digby","c":"Nova Scotia","s":47.7,"na":"Nova Scotia","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Gagetown","c":"New Brunswick","s":47.6,"na":"New Brunswick","nr":4,"cr":4,"q":[],"st":["Three times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Nelson","c":"British Columbia","s":47.6,"na":"British Columbia","nr":9,"cr":9,"q":[],"st":["Named in 10 press lists of charming and Christmas towns."]},{"k":"village","r":null,"n":"Squamish","c":"British Columbia","s":47.1,"na":"British Columbia","nr":10,"cr":10,"q":[],"st":["6 independent coffee shops, bakeries and tea rooms within a short walk of the center.","2 independent bookstores within a short walk of the center."]},{"k":"village","r":null,"n":"Osoyoos","c":"British Columbia","s":46.9,"na":"British Columbia","nr":11,"cr":11,"q":[],"st":[]},{"k":"village","r":null,"n":"Alma","c":"New Brunswick","s":46.1,"na":"New Brunswick","nr":5,"cr":5,"q":["Proper chef prepared food in a relaxed welcoming setting."],"st":["Four times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Fogo Island","c":"Newfoundland and Labrador","s":46.0,"na":"Newfoundland and Labrador","nr":2,"cr":2,"q":[],"st":[]},{"k":"village","r":null,"n":"Les Éboulements","c":"Quebec","s":45.6,"na":"Quebec","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Shediac","c":"New Brunswick","s":45.5,"na":"New Brunswick","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Sainte-Rose-du-Nord","c":"Quebec","s":45.2,"na":"Quebec","nr":7,"cr":7,"q":[],"st":["Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Bloomfield","c":"Ontario","s":45.1,"na":"Ontario","nr":12,"cr":12,"q":[],"st":["Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Neepawa","c":"Manitoba","s":44.7,"na":"Manitoba","nr":2,"cr":2,"q":[],"st":[]},{"k":"village","r":null,"n":"Frelighsburg","c":"Quebec","s":44.7,"na":"Quebec","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Elliston","c":"Newfoundland and Labrador","s":44.2,"na":"Newfoundland and Labrador","nr":3,"cr":3,"q":["Just the cozy place we needed on a foggy, misty day."],"st":["Four times as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"Field","c":"British Columbia","s":44.1,"na":"British Columbia","nr":12,"cr":12,"q":[],"st":["More coffee shops, bakeries and tea rooms per person than any other place in the study."]},{"k":"village","r":null,"n":"Steinbach","c":"Manitoba","s":43.9,"na":"Manitoba","nr":3,"cr":3,"q":[],"st":["8 independent coffee shops, bakeries and tea rooms within a short walk of the center."]},{"k":"village","r":null,"n":"Sylvan Lake","c":"Alberta","s":43.7,"na":"Alberta","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Minnedosa","c":"Manitoba","s":43.6,"na":"Manitoba","nr":4,"cr":4,"q":[],"st":[]},{"k":"village","r":null,"n":"Peace River","c":"Alberta","s":43.5,"na":"Alberta","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Dildo","c":"Newfoundland and Labrador","s":43.0,"na":"Newfoundland and Labrador","nr":4,"cr":4,"q":[],"st":[]},{"k":"village","r":null,"n":"Victoria","c":"Prince Edward Island","s":42.7,"na":"Prince Edward Island","nr":4,"cr":4,"q":[],"st":["More buildings on the national historic register near the center than 9 in 10 places in the study."]},{"k":"village","r":null,"n":"Caraquet","c":"New Brunswick","s":41.3,"na":"New Brunswick","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Boissevain","c":"Manitoba","s":39.8,"na":"Manitoba","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Pincher Creek","c":"Alberta","s":39.8,"na":"Alberta","nr":9,"cr":9,"q":[],"st":[]},{"k":"village","r":null,"n":"Humboldt","c":"Saskatchewan","s":39.2,"na":"Saskatchewan","nr":2,"cr":2,"q":[],"st":[]},{"k":"village","r":null,"n":"Swift Current","c":"Saskatchewan","s":38.5,"na":"Saskatchewan","nr":3,"cr":3,"q":["This restaurant is a hidden gem."],"st":[]},{"k":"village","r":null,"n":"Dauphin","c":"Manitoba","s":37.2,"na":"Manitoba","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"North Rustico","c":"Prince Edward Island","s":36.9,"na":"Prince Edward Island","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Killarney","c":"Ontario","s":35.3,"na":"Ontario","nr":13,"cr":13,"q":[],"st":[]},{"k":"village","r":null,"n":"Drumheller","c":"Alberta","s":33.9,"na":"Alberta","nr":10,"cr":10,"q":[],"st":[]},{"k":"village","r":null,"n":"Portage la Prairie","c":"Manitoba","s":33.7,"na":"Manitoba","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Wolseley","c":"Saskatchewan","s":33.0,"na":"Saskatchewan","nr":4,"cr":4,"q":[],"st":[]},{"k":"village","r":null,"n":"Maple Creek","c":"Saskatchewan","s":32.7,"na":"Saskatchewan","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Kensington","c":"Prince Edward Island","s":31.9,"na":"Prince Edward Island","nr":6,"cr":6,"q":[],"st":["Twice as many coffee shops, bakeries and tea rooms per person as the typical place in the study."]},{"k":"village","r":null,"n":"St. Anthony","c":"Newfoundland and Labrador","s":30.7,"na":"Newfoundland and Labrador","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Blacks Harbour","c":"New Brunswick","s":30.2,"na":"New Brunswick","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Estevan","c":"Saskatchewan","s":28.6,"na":"Saskatchewan","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Fort Qu'Appelle","c":"Saskatchewan","s":27.0,"na":"Saskatchewan","nr":7,"cr":7,"q":[],"st":[]}];
+  var T = {"tabsLabel": "Choose state winners or all towns", "tabs": {"town": "State winners", "village": "All towns"}, "search": "Find a town", "title": {"town": "Canada's Coziest Towns", "village": "Canada's Coziest Towns"}, "sub": "Each province's winner, ranked. Pick a province for all its towns.", "results": "{n} matches", "none": "No places match that search.", "of": "of", "alsoScored": "Also scored", "rankLabel": "No. {r} UK {k}", "noun": {"town": "state winner", "village": "town"}, "outOf": "out of 100", "visitor": "One visitor wrote", "howScored": "See how it scored", "hideScored": "Hide the scoring", "rawNote": "", "searchTitle": "Search results", "result1": "1 match", "visitors": "What visitors wrote", "method": "How we scored: cozy reviews, coffee shops and tea rooms, fireplaces, places to stay, bookstores, historic buildings and press lists.", "nationLabel": "Choose a province", "areaLabel": "Choose an area", "allNations": "All provinces", "allAreas": "All areas", "titleIn": {"town": "The Coziest Towns in {p}", "village": "The Coziest Towns in {p}"}, "winner": "Winner", "close": "Close", "embed": "Embed this chart", "download": "Download image", "embedHelp": "Copy this code and paste it into your page. It opens on the view you're looking at now.", "copy": "Copy code", "copied": "Embed code copied", "preparing": "Preparing image…", "downloaded": "Image downloaded", "dlFail": "Sorry, the image could not be made. Please try again.", "embedTitle": "Canada's coziest towns – Liquidline", "shotSub": "Coziness score out of 100", "inUK": "in Canada", "inK": {"town": "of the province winners", "village": "of the province winners"}, "sortLabel": "Sort the state winners", "sortRank": "Ranked", "sortAZ": "A to Z by state", "titleAZ": "The State Winners, A to Z", "regionLabels": {"The North": "The North (Yukon, NWT, Nunavut)"}};
+  var az = false, kind = "town", page = 0, sel = null, query = "", per = 10, nation = "", area = "";
+  var $ = function(id){ return document.getElementById(id); };
+  var CFG = {"hDesk": 760, "hMob": 900, "studyUrl": "liquidline.co.uk/news/cosiest-towns/#canada", "source": "coziest towns study, November 2026.", "regions": ["Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "The North"], "searchKind": "village", "noArea": true, "filterKind": "", "sortKind": "", "single": true, "keepRegion": true, "regionKind": "village"};
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g,""); }
+  function items(){
+    if (!query) { var L = (CFG.regionKind && nation) ? D.filter(function(d){ return d.k === CFG.regionKind && d.na === nation; }) : D.filter(function(d){ return d.k === kind && (!nation || d.na === nation) && (!area || d.c === area); });
+      if (az && kind === CFG.sortKind) L = L.slice().sort(function(a, b){ return a.c.localeCompare(b.c) || a.n.localeCompare(b.n); });
+      return L; }
+    var q = norm(query);
+    return D.filter(function(d){ return (!CFG.searchKind || d.k === CFG.searchKind) && norm(d.n + " " + d.c).indexOf(q) > -1; });
+  }
+  function num(d){ if (CFG.regionKind) return (query || nation) ? d.nr : d.r; return (query || CFG.single) ? d.r : area ? d.cr : nation ? d.nr : d.r; }
+  function ord(n){ var s = ["th","st","nd","rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  function rowHTML(d, i){
+    var n = num(d), win = n === 1 ? " win" : "";
+    return '<li><button type="button" class="row' + win + '" data-i="' + i + '"' + (sel === d ? ' aria-current="true"' : '') +
+       ' aria-label="' + esc((n ? n + ". " : "") + d.n + ", " + d.c + ". Score " + d.s.toFixed(1)) + '">' +
+      '<span class="rank">' + (n || "") + '</span>' +
+      '<span class="name"><strong>' + esc(d.n) + (n === 1 ? '<span class="tag">' + esc(T.winner) + '</span>' : '') + '</strong><span class="area">' + esc(d.c) + (query && !CFG.searchKind ? ' · ' + esc(T.noun[d.k]) : '') + '</span></span>' +
+      '<span class="track" aria-hidden="true"><span class="bar" style="width:' + d.s + '%"></span></span>' +
+      '<span class="score">' + d.s.toFixed(1) + '</span></button></li>';
+  }
+  function card(d){
+    if (!d) { $("card").innerHTML = ""; return; }
+    var bits = [];
+    var uk = d.r ? ord(d.r) + " " + ((T.inK && T.inK[d.k]) || T.inUK) : "", nat = d.nr ? ord(d.nr) + " in " + d.na : "", cty = d.cr ? ord(d.cr) + " in " + d.c : "";
+    if (area) bits = [cty, uk]; else if (nation) bits = [nat, uk]; else bits = [uk, cty];
+    bits = bits.filter(Boolean);
+    if (!bits.length) bits.push(d.c + ", " + d.na);
+    var h = '<button type="button" class="close" id="close" aria-label="' + esc(T.close) + '">\u00d7</button><p class="kicker">' + esc(bits.join(" · ")) + '</p>' +
+      '<h2>' + esc(d.n) + '</h2><p class="big"><b>' + d.s.toFixed(1) + '</b><span>' + esc(T.outOf) + '</span></p>';
+    if (d.q.length) h += '<div class="quotes">' + d.q.map(function(q){ return '<blockquote>\u201c' + esc(q) + '\u201d</blockquote>'; }).join("") +
+      '<p class="who">' + esc(d.q.length > 1 ? T.visitors : T.visitor) + '</p></div>';
+    if (d.st.length) h += '<ul class="stats">' + d.st.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>';
+    $("card").innerHTML = h;
+    $("close").onclick = closeCard;
+  }
+  function render(){
+    var all = items(), pages = Math.max(1, Math.ceil(all.length / per));
+    if (page >= pages) page = pages - 1;
+    var slice = all.slice(page * per, page * per + per);
+    $("title").textContent = query ? T.searchTitle : (area || nation) ? T.titleIn[kind].replace("{p}", area || nation) : (az && kind === CFG.sortKind && T.titleAZ) ? T.titleAZ : T.title[kind];
+    $("sub").textContent = query ? (all.length === 1 ? T.result1 : T.results.replace("{n}", all.length)) : T.sub;
+    var html = "", lastRanked = true;
+    slice.forEach(function(d, j){
+      lastRanked = !!num(d);
+      html += rowHTML(d, page * per + j);
+    });
+    $("list").innerHTML = html || '<li class="empty">' + esc(T.none) + '</li>';
+    var first = page * per + 1, last = page * per + slice.length;
+    $("pageinfo").textContent = all.length ? first + "–" + last + " " + T.of + " " + all.length : "";
+    $("prev").disabled = page === 0; $("next").disabled = page >= pages - 1;
+    Array.prototype.forEach.call(document.querySelectorAll(".row"), function(b){
+      b.onclick = function(){ var i = this.getAttribute("data-i"); sel = all[+i]; render(); card(sel); saveState(); openNear(document.querySelector('.row[data-i="' + i + '"]')); };
+    });
+  }
+  function fillAreas(){
+    var list = D.filter(function(d){ return d.k === kind && (!nation || d.na === nation); }).map(function(d){ return d.c; });
+    list = list.filter(function(c, i){ return list.indexOf(c) === i; }).sort();
+    if (list.indexOf(area) < 0) area = "";
+    $("area").innerHTML = '<option value="">' + esc(T.allAreas) + '</option>' + list.map(function(c){ return '<option' + (c === area ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join("");
+  }
+  (function(){
+    var ns = CFG.regions, lb = T.regionLabels || {};
+    $("nation").innerHTML = '<option value="">' + esc(T.allNations) + '</option>' + ns.map(function(n){ return '<option value="' + esc(n) + '">' + esc(lb[n] || n) + '</option>'; }).join("");
+  })();
+  function refilter(){ closeCard(); page = 0; $("q").value = ""; query = ""; var r = items(); sel = r[0] || null; render(); card(sel); saveState(); }
+  $("nation").onchange = function(){ nation = this.value; fillAreas(); refilter(); };
+  $("area").onchange = function(){ area = this.value; refilter(); };
+  function slug(s){ return norm(s).replace(/ +/g, "-"); }
+  function stateHash(){
+    var p = [];
+    if (kind !== "town") p.push("villages");
+    if (az && kind === CFG.sortKind) p.push("az");
+    if (nation) p.push("nation-" + slug(nation));
+    if (area) p.push("area-" + slug(area));
+    if (sel) p.push("place-" + slug(sel.n));
+    return p.join("--");
+  }
+  function saveState(){}
+  function readState(){
+    var h = (location.hash || "").replace("#", ""); if (!h) return;
+    h.split("--").forEach(function(t){
+      if (t === "villages") kind = "village";
+      if (t === "az") az = true;
+      if (t.indexOf("nation-") === 0) CFG.regions.forEach(function(n){ if (slug(n) === t.slice(7)) nation = n; });
+      if (t.indexOf("area-") === 0) D.forEach(function(d){ if (slug(d.c) === t.slice(5)) area = d.c; });
+      if (t.indexOf("place-") === 0) D.forEach(function(d){ if (slug(d.n) === t.slice(6) && (!sel || d.k === kind)) sel = d; });
+    });
+    if (sel) kind = sel.k;
+  }
+  function say(m){ $("status").textContent = m; setTimeout(function(){ if ($("status").textContent === m) $("status").textContent = ""; }, 4000); }
+  function pageUrl(){ return location.href.split("#")[0].split("?")[0]; }
+  function embedCode(){
+    var hgt = '<style>.ll-cosy{height:' + CFG.hDesk + 'px}@media(max-width:700px){.ll-cosy{height:' + CFG.hMob + 'px}}</style>\n';
+    return hgt + '<iframe class="ll-cosy" src="' + pageUrl() + "#" + stateHash() + '" title="' + T.embedTitle + '" width="100%" style="border:0;width:100%;" loading="lazy" scrolling="no"></iframe>\n' +
+      '<p style="font:12px Arial,sans-serif;color:#5f5b5b;">Source: ' + (CFG.studyUrl ? '<a href="https://' + CFG.studyUrl + '">Liquidline</a>' : 'Liquidline') + '</p>';
+  }
+  $("embedBtn").onclick = function(){ var b = $("embedBox"), o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o); if (o) { $("embedCode").value = embedCode(); $("embedCode").select(); } };
+  $("embedClose").onclick = function(){ $("embedBox").classList.remove("open"); $("embedBtn").setAttribute("aria-expanded", "false"); $("embedBtn").focus(); };
+  $("copyBtn").onclick = function(){
+    var t = $("embedCode"); t.select();
+    var ok = function(){ say(T.copied); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t.value).then(ok, function(){ document.execCommand("copy"); ok(); });
+    else { document.execCommand("copy"); ok(); }
+  };
+  function buildShot(){
+    var all = items().slice(0, 10), title = $("title").textContent;
+    var h = '<h1>' + esc(title) + '</h1><p class="sub">' + esc(T.shotSub) + '</p>';
+    all.forEach(function(d){ var n = num(d);
+      h += '<div class="srow' + (n === 1 ? ' win' : '') + '"><span class="rank">' + (n || "") + '</span><span class="name"><strong>' + esc(d.n) + '</strong><span class="area">' + esc(d.c) + '</span></span>' +
+        '<span class="track"><span class="bar" style="width:' + d.s + '%;' + (n === 1 ? 'background:#e30613' : '') + '"></span></span><span class="score">' + d.s.toFixed(1) + '</span></div>'; });
+    h += '<p class="sfoot">Source: <b>Liquidline</b>, ' + esc(CFG.source) + '<br>Full study: <b style="white-space:nowrap">' + esc(CFG.studyUrl) + '</b></p>';
+    $("shot").innerHTML = h; return title;
+  }
+  $("dlBtn").onclick = function(){
+    if (typeof html2canvas !== "function") { say(T.dlFail); return; }
+    var b = this; b.disabled = true; say(T.preparing);
+    var title = buildShot();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+      return html2canvas($("shot"), { scale: 2, backgroundColor: "#ffffff" });
+    }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(res, "image/png"); });
+    }).then(function(blob){
+      var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = "liquidline-" + slug(title) + ".png"; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000); b.disabled = false; say(T.downloaded);
+    }).catch(function(){ b.disabled = false; say(T.dlFail); });
+  };
+  var mobile = window.matchMedia("(max-width:700px)");
+  function closeCard(){ var c = $("card"); c.classList.remove("open"); var r = document.querySelector('.row[aria-current="true"]'); if (r && mobile.matches) r.focus(); }
+  function openNear(btn){
+    var c = $("card");
+    if (!mobile.matches) { c.classList.remove("open"); c.style.top = ""; return; }
+    c.classList.add("open");
+    var lay = document.querySelector(".layout"), top = btn.getBoundingClientRect().bottom - lay.getBoundingClientRect().top + 4;
+    var maxTop = Math.max(0, lay.offsetHeight - c.offsetHeight);
+    c.style.top = Math.min(top, maxTop) + "px";
+    $("close").focus();
+  }
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeCard(); });
+  function syncSeg(){ if (!CFG.sortKind) return; $("seg").classList.toggle("on", kind === CFG.sortKind); Array.prototype.forEach.call(document.querySelectorAll("#seg button"), function(b){ b.setAttribute("aria-pressed", (b.getAttribute("data-s") === "az") === az); }); }
+  function syncFilter(){ syncSeg(); if (!CFG.filterKind) return; var on = kind === CFG.filterKind; $("nation").style.display = on ? "" : "none"; if (!on && nation) { nation = ""; $("nation").value = ""; fillAreas(); } }
+  function setKind(k){
+    kind = k; syncFilter(); fillAreas(); setTimeout(saveState, 0);
+    kind = k; page = 0;
+    Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === k); });
+    sel = items()[0] || null; render(); card(sel);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.onclick = function(){ $("q").value = ""; query = ""; setKind(this.getAttribute("data-k")); }; });
+  $("prev").onclick = function(){ page--; closeCard(); render(); };
+  $("next").onclick = function(){ page++; closeCard(); render(); };
+  $("q").oninput = function(){ query = this.value.trim(); page = 0; var r = items(); if (r.length && r.indexOf(sel) < 0) { sel = r[0]; card(sel); } render(); };
+  if (CFG.noArea) { $("area").style.display = "none"; document.body.classList.add("noarea"); }
+  if (CFG.single) { document.querySelector(".top").style.justifyContent = "flex-start"; document.querySelector(".tabs").style.display = "none"; if (!CFG.keepRegion) $("nation").style.display = "none"; $("area").style.display = "none"; }
+  readState(); syncFilter();
+  Array.prototype.forEach.call(document.querySelectorAll("#seg button"), function(b){ b.onclick = function(){ az = this.getAttribute("data-s") === "az"; syncSeg(); closeCard(); page = 0; var r = items(); sel = r[0] || null; render(); card(sel); }; });
+  var want = sel;
+  document.body.classList.add("intro");
+  $("nation").value = nation; fillAreas(); $("area").value = area;
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === kind); });
+  var list0 = items();
+  sel = want && list0.indexOf(want) > -1 ? want : (list0[0] || null);
+  if (sel) page = Math.floor(list0.indexOf(sel) / per);
+  render(); card(sel);
+  setTimeout(function(){ document.body.classList.remove("intro"); }, 900);
+})();
+</script>
+<div class="shot" id="shot" aria-hidden="true"></div>
+</body>
+</html>
