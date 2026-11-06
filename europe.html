@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Europe&#x27;s Cosiest Towns | Liquidline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red:#e30613; --black:#000604; --grey:#cac7c7; --muted:#5f5b5b; --track:#f2f1f1; --soft:#f7f6f6; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Poppins, Arial, sans-serif; color:var(--black); background:#fff; padding:16px; -webkit-font-smoothing:antialiased; }
+  .top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .tabs { display:inline-flex; gap:4px; padding:4px; border:1px solid var(--grey); border-radius:999px; }
+  .tabs button { font:500 14px Poppins, Arial, sans-serif; padding:6px 18px; border:0; border-radius:999px; background:none; cursor:pointer; color:var(--black); }
+  .tabs button[aria-pressed="true"] { background:var(--black); color:#fff; }
+  .seg { display:none; gap:2px; padding:3px; border:1px solid var(--grey); border-radius:999px; }
+  .seg.on { display:inline-flex; }
+  .seg button { font:500 13px Poppins, Arial, sans-serif; padding:5px 14px; border:0; border-radius:999px; background:none; cursor:pointer; color:var(--black); }
+  .seg button[aria-pressed="true"] { background:#eeeded; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; }
+  select { font:13px Poppins, Arial, sans-serif; padding:6px 28px 6px 12px; border:1px solid var(--grey); border-radius:999px; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23000604' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center; -webkit-appearance:none; appearance:none; color:var(--black); cursor:pointer; min-width:150px; max-width:100%; }
+  select:focus { outline:none; border-color:var(--black); }
+  .search { flex:1 1 180px; max-width:260px; position:relative; }
+  .search input { width:100%; font:14px Poppins, Arial, sans-serif; padding:8px 12px 8px 34px; border:1px solid var(--grey); border-radius:999px; outline:none; }
+  .search input:focus { border-color:var(--black); }
+  .search svg { position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--muted); }
+  h1 { font-family:Merriweather, Georgia, serif; font-size:clamp(19px,4vw,24px); font-weight:700; line-height:1.25; }
+  .sub { font-size:13.5px; color:var(--muted); margin:3px 0 10px; }
+  .layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:22px; align-items:start; }
+  ol { list-style:none; min-height:calc(10 * 44.5px); }
+  .row { width:100%; display:grid; grid-template-columns:30px minmax(120px,38%) 1fr 38px; align-items:center; column-gap:10px;
+         padding:6px 6px 6px 2px; border:0; border-radius:6px; background:none; cursor:pointer; text-align:left; font:inherit; color:inherit; }
+  .row:hover { background:var(--soft); }
+  .row[aria-current="true"] { background:var(--soft); box-shadow:inset 3px 0 0 var(--black); }
+  .row:focus-visible { outline:2px solid var(--red); outline-offset:-2px; }
+  li + li { margin-top:1px; }
+  .rank { font-size:13.5px; font-weight:500; color:var(--muted); text-align:right; }
+  .name { display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+  .name strong { font-size:14.5px; font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .area { font-size:11.5px; color:var(--muted); }
+  .track { height:8px; background:var(--track); border-radius:0 4px 4px 0; }
+  .bar { display:block; height:100%; background:var(--grey); border-radius:0 4px 4px 0; }
+  .intro .bar { animation:grow .7s ease-out both; }
+  @keyframes grow { from { width:0; } }
+  @media (prefers-reduced-motion: reduce) { .intro .bar { animation:none; } }
+  .score { font-size:14px; font-weight:700; text-align:right; }
+  .win .bar { background:var(--red); } .win .rank, .win .name strong { color:var(--red); font-weight:700; }
+  .row.win { background:rgba(227,6,19,.05); }
+  .row.win[aria-current="true"] { background:rgba(227,6,19,.08); }
+  .tag { display:inline-block; font-size:10.5px; font-weight:700; color:var(--red); border:1px solid var(--red); border-radius:999px; padding:0 6px; margin-left:6px; vertical-align:2px; letter-spacing:.02em; }
+  .pager { display:flex; align-items:center; justify-content:space-between; margin-top:10px; font-size:13px; }
+  .pager button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--grey); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .pager button:disabled { opacity:.35; cursor:default; }
+  .pager span { color:var(--muted); }
+  .empty { font-size:14px; color:var(--muted); padding:20px 4px; }
+  .card { background:var(--soft); border-radius:12px; padding:18px; }
+  .card .kicker { font-size:12px; font-weight:500; color:var(--muted); }
+  .card h2 { font-family:Merriweather, Georgia, serif; font-size:22px; font-weight:700; line-height:1.25; margin-top:2px; }
+  .card .big { display:flex; align-items:baseline; gap:6px; margin-top:6px; }
+  .card .big b { font-size:34px; font-weight:700; color:var(--red); line-height:1; }
+  .card .big span { font-size:13px; color:var(--muted); }
+  blockquote + blockquote { margin-top:10px; }
+  .quotes { margin-top:16px; background:rgba(227,6,19,.05); border-radius:10px; padding:12px 14px; }
+  blockquote { font-family:Merriweather, Georgia, serif; font-style:italic; font-size:16.5px; line-height:1.5; }
+  .who { font-size:12px; color:var(--muted); margin-top:6px; }
+  .stats { list-style:none; margin-top:16px; }
+  .stats li { font-size:14px; line-height:1.45; padding-left:16px; position:relative; }
+  .stats li + li { margin-top:8px; }
+  .stats li::before { content:""; position:absolute; left:1px; top:.55em; width:7px; height:7px; border-radius:50%; background:var(--red); }
+  .close { display:none; position:absolute; top:8px; right:10px; width:34px; height:34px; border:0; border-radius:50%; background:#fff; font-size:22px; line-height:1; cursor:pointer; color:var(--black); }
+  .layout { position:relative; }
+  .tools { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tools button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--black); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .tools button:hover { background:var(--soft); }
+  .status { font-size:12px; color:var(--muted); align-self:center; }
+  .embed { display:none; position:absolute; left:0; right:0; bottom:0; z-index:6; background:#fff; border:1px solid var(--grey); border-radius:12px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+  .embed.open { display:block; }
+  .embed p { font-size:13px; margin-bottom:8px; }
+  .embed textarea { width:100%; height:120px; font:12px/1.4 ui-monospace, Menlo, Consolas, monospace; border:1px solid var(--grey); border-radius:8px; padding:8px; resize:none; }
+  .embed .row2 { display:flex; gap:8px; margin-top:8px; }
+  .embed .row2 button { font:500 13px Poppins, Arial, sans-serif; background:none; border:0; border-bottom:1px solid var(--black); padding:0 0 1px; cursor:pointer; color:var(--black); }
+  .shot { position:absolute; left:-12000px; top:0; width:800px; background:#fff; padding:32px; }
+  .shot h1 { font-size:30px; } .shot .sub { font-size:15px; margin-bottom:16px; }
+  .shot .srow { display:grid; grid-template-columns:34px 260px 1fr 56px; align-items:center; column-gap:14px; padding:7px 0; border-top:1px solid #eeeded; }
+  .shot .srow .rank, .shot .srow .score { font-size:16px; } .shot .srow strong { font-size:17px; font-weight:500; } .shot .srow .area { font-size:13px; }
+  .shot .srow .track { height:10px; } .shot .win { background:rgba(227,6,19,.05); }
+  .shot .sfoot { font-size:13px; color:var(--muted); margin-top:16px; }
+  .shot .sfoot b { color:var(--black); }
+  .foot { font-size:12px; color:var(--muted); margin-top:14px; }
+  .foot b { color:var(--black); font-weight:500; }
+  .foot a.src { color:inherit; }
+  @media (max-width:700px) { .layout { grid-template-columns:1fr; }
+    .card { display:none; position:absolute; left:0; right:0; z-index:5; padding-top:20px; box-shadow:0 10px 30px rgba(0,0,0,.18); background:#fff; border:1px solid var(--grey); }
+    .card.open { display:block; } .close { display:block; } .card .kicker { padding-right:34px; } .search { max-width:none; } .filters { width:100%; } .filters select { flex:1 1 0; min-width:0; } }
+  @media (max-width:480px) { .filters select { flex:1 1 100%; } }
+  @media (max-width:420px) { .row { grid-template-columns:24px minmax(110px,44%) 1fr 34px; column-gap:8px; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs" role="group" aria-label="Choose state winners or all towns">
+      <button type="button" data-k="town" aria-pressed="true">State winners</button>
+      <button type="button" data-k="village" aria-pressed="false">All towns</button>
+    </div>
+    <div class="filters">
+      <div class="seg" id="seg" role="group" aria-label="Sort the state winners"><button type="button" data-s="rank" aria-pressed="true">Ranked</button><button type="button" data-s="az" aria-pressed="false">A to Z by state</button></div>
+      <select id="nation" aria-label="Choose a country"></select>
+      <select id="area" aria-label="Choose an area"></select>
+    </div>
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" placeholder="Find a town" aria-label="Find a town" autocomplete="off"></label>
+  </div>
+  <div class="layout">
+    <div>
+      <h1 id="title"></h1>
+      <p class="sub" id="sub"></p>
+      <ol id="list"></ol>
+      <div class="pager"><button type="button" id="prev">‹ Previous</button><span id="pageinfo"></span><button type="button" id="next">Next ›</button></div>
+    </div>
+    <aside class="card" id="card" aria-live="polite"></aside>
+    <div class="embed" id="embedBox" role="dialog" aria-label="Embed this chart"><p>Copy this code and paste it into your page. It opens on the view you&#x27;re looking at now.</p><textarea id="embedCode" readonly></textarea>
+      <div class="row2"><button type="button" class="more" id="copyBtn">Copy code</button><button type="button" class="more" id="embedClose">Close</button></div></div>
+  </div>
+  <div class="tools" data-no-capture><button type="button" id="embedBtn" aria-expanded="false">Embed this chart</button><button type="button" id="dlBtn">Download image</button><span class="status" id="status" role="status"></span></div>
+  <p class="foot">How we scored: cosy reviews, cafés and tea rooms, fireplaces, places to stay, bookshops, historic buildings and press lists. Each country was scored on its own.</p>
+  <p class="foot">Source: <a class="src" href="https://liquidline.co.uk/news/cosiest-towns/#europe" target="_blank" rel="noopener"><b>Liquidline</b></a>, cosiest towns study, November 2026. Full study: <a style="white-space:nowrap" class="src" href="https://liquidline.co.uk/news/cosiest-towns/#europe" target="_blank" rel="noopener">liquidline.co.uk/news/cosiest-towns/#europe</a></p>
+  <noscript><p class="foot">Turn on JavaScript to explore every place.</p></noscript>
+<script>
+(function(){
+  var D = [{"k":"town","r":1,"n":"Bad Gastein","c":"Austria","s":83.1,"na":"Austria","nr":1,"cr":1,"q":[],"st":["Europe's cosiest town.","The cosiest reviews of any place in Austria in the study. Over 2 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word).","10 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"town","r":2,"n":"Mürren","c":"Switzerland","s":75.9,"na":"Switzerland","nr":1,"cr":1,"q":[],"st":["Switzerland's cosiest village.","More cafés, bakeries and tea rooms per person than any other place in Switzerland in the study.","The cosiest reviews of any place in Switzerland in the study. 4 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"town","r":3,"n":"Kaysersberg","c":"France","s":73.8,"na":"France","nr":1,"cr":1,"q":[],"st":["France's cosiest town.","The cosiest reviews of any place in France in the study. 6 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"town","r":4,"n":"Merano","c":"Italy","s":72.8,"na":"Italy","nr":1,"cr":1,"q":[],"st":["Italy's cosiest town.","More buildings on the national heritage register near the centre than 9 in 10 places in Italy in the study.","35 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"town","r":5,"n":"Durbuy","c":"Belgium","s":71.6,"na":"Belgium","nr":1,"cr":1,"q":[],"st":["Belgium's cosiest village.","Named in 12 press lists of charming and Christmas towns."]},{"k":"town","r":6,"n":"Ystad","c":"Sweden","s":70.0,"na":"Sweden","nr":1,"cr":1,"q":[],"st":["Sweden's cosiest town.","14 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"town","r":7,"n":"Skagen","c":"Denmark","s":69.1,"na":"Denmark","nr":1,"cr":1,"q":[],"st":["Denmark's cosiest town.","The cosiest reviews of any place in Denmark in the study. Over 2 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word).","9 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"town","r":8,"n":"Rothenburg ob der Tauber","c":"Germany","s":68.4,"na":"Germany","nr":1,"cr":1,"q":[],"st":["Germany's cosiest town.","Named in more press lists of charming and Christmas towns than any other place in Germany.","More buildings on the national heritage register near the centre than 9 in 10 places in Germany in the study.","18 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"town","r":9,"n":"Veere","c":"Netherlands","s":67.7,"na":"the Netherlands","nr":1,"cr":1,"q":[],"st":["The Netherlands' cosiest village.","More cafés, bakeries and tea rooms per person than any other place in the Netherlands in the study.","The cosiest reviews of any place in the Netherlands in the study. 4 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"town","r":10,"n":"Flåm","c":"Norway","s":57.7,"na":"Norway","nr":1,"cr":1,"q":[],"st":["Norway's cosiest village.","More cafés, bakeries and tea rooms per person than any other place in Norway in the study."]},{"k":"village","r":1,"n":"Bad Gastein","c":"Austria","s":83.1,"na":"Austria","nr":1,"cr":1,"q":[],"st":["Europe's cosiest town.","The cosiest reviews of any place in Austria in the study. Over 2 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word).","10 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":2,"n":"Mürren","c":"Switzerland","s":75.9,"na":"Switzerland","nr":1,"cr":1,"q":[],"st":["Switzerland's cosiest village.","More cafés, bakeries and tea rooms per person than any other place in Switzerland in the study.","The cosiest reviews of any place in Switzerland in the study. 4 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":3,"n":"Kaysersberg","c":"France","s":73.8,"na":"France","nr":1,"cr":1,"q":[],"st":["France's cosiest town.","The cosiest reviews of any place in France in the study. 6 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":4,"n":"Merano","c":"Italy","s":72.8,"na":"Italy","nr":1,"cr":1,"q":[],"st":["Italy's cosiest town.","More buildings on the national heritage register near the centre than 9 in 10 places in Italy in the study.","35 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":5,"n":"Durbuy","c":"Belgium","s":71.6,"na":"Belgium","nr":1,"cr":1,"q":[],"st":["Belgium's cosiest village.","Named in 12 press lists of charming and Christmas towns."]},{"k":"village","r":6,"n":"Ystad","c":"Sweden","s":70.0,"na":"Sweden","nr":1,"cr":1,"q":[],"st":["Sweden's cosiest town.","14 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":7,"n":"Skagen","c":"Denmark","s":69.1,"na":"Denmark","nr":1,"cr":1,"q":[],"st":["Denmark's cosiest town.","The cosiest reviews of any place in Denmark in the study. Over 2 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word).","9 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Visby","c":"Sweden","s":68.4,"na":"Sweden","nr":2,"cr":2,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Sweden in the study.","24 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":8,"n":"Rothenburg ob der Tauber","c":"Germany","s":68.4,"na":"Germany","nr":1,"cr":1,"q":[],"st":["Germany's cosiest town.","Named in more press lists of charming and Christmas towns than any other place in Germany.","More buildings on the national heritage register near the centre than 9 in 10 places in Germany in the study.","18 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":9,"n":"Veere","c":"Netherlands","s":67.7,"na":"the Netherlands","nr":1,"cr":1,"q":[],"st":["The Netherlands' cosiest village.","More cafés, bakeries and tea rooms per person than any other place in the Netherlands in the study.","The cosiest reviews of any place in the Netherlands in the study. 4 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":null,"n":"Quedlinburg","c":"Germany","s":64.5,"na":"Germany","nr":2,"cr":2,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Germany in the study.","Named in 10 press lists of charming and Christmas towns.","24 independent cafés, bakeries and tea rooms within a short walk of the centre.","3 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Vipiteno","c":"Italy","s":63.5,"na":"Italy","nr":2,"cr":2,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in Italy.","13 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Giethoorn","c":"Netherlands","s":61.4,"na":"the Netherlands","nr":2,"cr":2,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in the Netherlands."]},{"k":"village","r":null,"n":"Les Baux-de-Provence","c":"France","s":60.0,"na":"France","nr":2,"cr":2,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in France in the study."]},{"k":"village","r":null,"n":"Vadstena","c":"Sweden","s":59.7,"na":"Sweden","nr":3,"cr":3,"q":[],"st":["7 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Thorn","c":"Netherlands","s":58.9,"na":"the Netherlands","nr":3,"cr":3,"q":[],"st":["Nearly 4 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":null,"n":"Cochem","c":"Germany","s":58.9,"na":"Germany","nr":3,"cr":3,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in Germany in the study.","Named in 12 press lists of charming and Christmas towns."]},{"k":"village","r":null,"n":"Ribe","c":"Denmark","s":58.4,"na":"Denmark","nr":2,"cr":2,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Denmark in the study.","10 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Stein am Rhein","c":"Switzerland","s":58.0,"na":"Switzerland","nr":2,"cr":2,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in Switzerland in the study.","More buildings on the national heritage register near the centre than 9 in 10 places in Switzerland in the study."]},{"k":"village","r":10,"n":"Flåm","c":"Norway","s":57.7,"na":"Norway","nr":1,"cr":1,"q":[],"st":["Norway's cosiest village.","More cafés, bakeries and tea rooms per person than any other place in Norway in the study."]},{"k":"village","r":null,"n":"Ortisei","c":"Italy","s":57.5,"na":"Italy","nr":3,"cr":3,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"St. Wolfgang im Salzkammergut","c":"Austria","s":57.2,"na":"Austria","nr":2,"cr":2,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Austria in the study."]},{"k":"village","r":null,"n":"Saint-Cirq-Lapopie","c":"France","s":56.4,"na":"France","nr":3,"cr":3,"q":[],"st":["Four times as many cafés, bakeries and tea rooms per person as the typical place in France in the study."]},{"k":"village","r":null,"n":"Ærøskøbing","c":"Denmark","s":55.9,"na":"Denmark","nr":3,"cr":3,"q":[],"st":["Four times as many cafés, bakeries and tea rooms per person as the typical place in Denmark in the study."]},{"k":"village","r":null,"n":"Appenzell","c":"Switzerland","s":55.6,"na":"Switzerland","nr":3,"cr":3,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Switzerland in the study.","6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"De Haan","c":"Belgium","s":55.3,"na":"Belgium","nr":2,"cr":2,"q":[],"st":["5 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Dinkelsbühl","c":"Germany","s":55.1,"na":"Germany","nr":4,"cr":4,"q":[],"st":["11 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Dinant","c":"Belgium","s":55.0,"na":"Belgium","nr":3,"cr":3,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in Belgium.","6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Bourtange","c":"Netherlands","s":54.5,"na":"the Netherlands","nr":4,"cr":4,"q":[],"st":["Three times as many cafés, bakeries and tea rooms per person as the typical place in the Netherlands in the study."]},{"k":"village","r":null,"n":"Sigtuna","c":"Sweden","s":54.4,"na":"Sweden","nr":4,"cr":4,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Sweden in the study.","6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Henningsvær","c":"Norway","s":54.2,"na":"Norway","nr":2,"cr":2,"q":[],"st":[]},{"k":"village","r":null,"n":"Füssen","c":"Germany","s":53.8,"na":"Germany","nr":5,"cr":5,"q":[],"st":["21 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"St. Moritz","c":"Switzerland","s":53.1,"na":"Switzerland","nr":4,"cr":4,"q":[],"st":["5 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Bouillon","c":"Belgium","s":52.7,"na":"Belgium","nr":4,"cr":4,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Belgium in the study."]},{"k":"village","r":null,"n":"Riquewihr","c":"France","s":52.4,"na":"France","nr":4,"cr":4,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in France in the study.","Over 3 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":null,"n":"Ieper","c":"Belgium","s":51.7,"na":"Belgium","nr":5,"cr":5,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Belgium in the study.","12 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"De Rijp","c":"Netherlands","s":51.5,"na":"the Netherlands","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Lindau","c":"Germany","s":51.5,"na":"Germany","nr":6,"cr":6,"q":[],"st":["28 independent cafés, bakeries and tea rooms within a short walk of the centre.","4 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Bressanone","c":"Italy","s":51.2,"na":"Italy","nr":4,"cr":4,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Italy in the study.","28 independent cafés, bakeries and tea rooms within a short walk of the centre.","3 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Karlskrona","c":"Sweden","s":51.0,"na":"Sweden","nr":5,"cr":5,"q":[],"st":["12 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Monschau","c":"Germany","s":51.0,"na":"Germany","nr":7,"cr":7,"q":[],"st":["Three times as many cafés, bakeries and tea rooms per person as the typical place in Germany in the study.","Named in 12 press lists of charming and Christmas towns."]},{"k":"village","r":null,"n":"Meersburg","c":"Germany","s":50.6,"na":"Germany","nr":8,"cr":8,"q":[],"st":["18 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Narvik","c":"Norway","s":50.6,"na":"Norway","nr":3,"cr":3,"q":[],"st":["8 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Lauterbrunnen","c":"Switzerland","s":50.4,"na":"Switzerland","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Grindelwald","c":"Switzerland","s":50.2,"na":"Switzerland","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Millstatt","c":"Austria","s":50.0,"na":"Austria","nr":3,"cr":3,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Gränna","c":"Sweden","s":49.8,"na":"Sweden","nr":6,"cr":6,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in Sweden in the study."]},{"k":"village","r":null,"n":"Gudhjem","c":"Denmark","s":49.5,"na":"Denmark","nr":4,"cr":4,"q":[],"st":["Five times as many cafés, bakeries and tea rooms per person as the typical place in Denmark in the study.","More buildings on the national heritage register near the centre than 9 in 10 places in Denmark in the study."]},{"k":"village","r":null,"n":"Hunawihr","c":"France","s":48.9,"na":"France","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Dürnstein","c":"Austria","s":48.9,"na":"Austria","nr":4,"cr":4,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Austria in the study."]},{"k":"village","r":null,"n":"Castelrotto","c":"Italy","s":48.6,"na":"Italy","nr":5,"cr":5,"q":[],"st":[]},{"k":"village","r":null,"n":"Faaborg","c":"Denmark","s":48.6,"na":"Denmark","nr":5,"cr":5,"q":[],"st":["11 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Nora","c":"Sweden","s":48.5,"na":"Sweden","nr":7,"cr":7,"q":[],"st":["8 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Bad Ischl","c":"Austria","s":48.4,"na":"Austria","nr":5,"cr":5,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Austria in the study.","15 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Svaneke","c":"Denmark","s":47.8,"na":"Denmark","nr":6,"cr":6,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in Denmark in the study."]},{"k":"village","r":null,"n":"Rochefort-en-Terre","c":"France","s":47.7,"na":"France","nr":6,"cr":6,"q":[],"st":["2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Zell am See","c":"Austria","s":47.4,"na":"Austria","nr":6,"cr":6,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Heiligenblut","c":"Austria","s":47.2,"na":"Austria","nr":7,"cr":7,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in Austria in the study."]},{"k":"village","r":null,"n":"Stege","c":"Denmark","s":47.2,"na":"Denmark","nr":7,"cr":7,"q":[],"st":["8 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Balestrand","c":"Norway","s":47.0,"na":"Norway","nr":4,"cr":4,"q":[],"st":[]},{"k":"village","r":null,"n":"Oisterwijk","c":"Netherlands","s":47.0,"na":"the Netherlands","nr":6,"cr":6,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Reine","c":"Norway","s":46.9,"na":"Norway","nr":5,"cr":5,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in Norway."]},{"k":"village","r":null,"n":"Lillehammer","c":"Norway","s":46.9,"na":"Norway","nr":6,"cr":6,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in Norway in the study.","21 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Santa Maria Maggiore","c":"Italy","s":46.8,"na":"Italy","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Ebeltoft","c":"Denmark","s":46.5,"na":"Denmark","nr":8,"cr":8,"q":[],"st":["10 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Gruyères","c":"Switzerland","s":46.5,"na":"Switzerland","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Morcote","c":"Switzerland","s":46.2,"na":"Switzerland","nr":8,"cr":8,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in Switzerland.","Five times as many cafés, bakeries and tea rooms per person as the typical place in Switzerland in the study."]},{"k":"village","r":null,"n":"Eguisheim","c":"France","s":46.0,"na":"France","nr":7,"cr":7,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in France."]},{"k":"village","r":null,"n":"Gordes","c":"France","s":45.9,"na":"France","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Gubbio","c":"Italy","s":45.9,"na":"Italy","nr":7,"cr":7,"q":[],"st":["13 independent cafés, bakeries and tea rooms within a short walk of the centre.","3 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Wernigerode","c":"Germany","s":45.8,"na":"Germany","nr":9,"cr":9,"q":[],"st":["16 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Alpbach","c":"Austria","s":45.8,"na":"Austria","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Bard","c":"Italy","s":45.8,"na":"Italy","nr":8,"cr":8,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Italy in the study."]},{"k":"village","r":null,"n":"Spa","c":"Belgium","s":45.3,"na":"Belgium","nr":6,"cr":6,"q":[],"st":[]},{"k":"village","r":null,"n":"Bacharach","c":"Germany","s":45.2,"na":"Germany","nr":10,"cr":10,"q":[],"st":["Three times as many cafés, bakeries and tea rooms per person as the typical place in Germany in the study."]},{"k":"village","r":null,"n":"Marstrand","c":"Sweden","s":45.0,"na":"Sweden","nr":8,"cr":8,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Sweden in the study."]},{"k":"village","r":null,"n":"Alberobello","c":"Italy","s":45.0,"na":"Italy","nr":9,"cr":9,"q":[],"st":["11 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Naarden","c":"Netherlands","s":44.9,"na":"the Netherlands","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Sønderho","c":"Denmark","s":44.8,"na":"Denmark","nr":9,"cr":9,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Denmark in the study."]},{"k":"village","r":null,"n":"Mariefred","c":"Sweden","s":44.5,"na":"Sweden","nr":9,"cr":9,"q":[],"st":[]},{"k":"village","r":null,"n":"Spakenburg","c":"Netherlands","s":44.5,"na":"the Netherlands","nr":8,"cr":8,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Barolo","c":"Italy","s":43.5,"na":"Italy","nr":10,"cr":10,"q":[],"st":["Three times as many cafés, bakeries and tea rooms per person as the typical place in Italy in the study."]},{"k":"village","r":null,"n":"Sankt Gilgen","c":"Austria","s":43.5,"na":"Austria","nr":9,"cr":9,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Ostseebad Ahrenshoop","c":"Germany","s":43.5,"na":"Germany","nr":11,"cr":11,"q":[],"st":["More cafés, bakeries and tea rooms per person than any other place in Germany in the study."]},{"k":"village","r":null,"n":"Mariager","c":"Denmark","s":43.4,"na":"Denmark","nr":10,"cr":10,"q":[],"st":[]},{"k":"village","r":null,"n":"Damme","c":"Belgium","s":42.5,"na":"Belgium","nr":7,"cr":7,"q":[],"st":["3 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Hallstatt","c":"Austria","s":41.8,"na":"Austria","nr":10,"cr":10,"q":[],"st":["Named in more press lists of charming and Christmas towns than any other place in Austria.","Twice as many cafés, bakeries and tea rooms per person as the typical place in Austria in the study."]},{"k":"village","r":null,"n":"Flekkefjord","c":"Norway","s":41.7,"na":"Norway","nr":7,"cr":7,"q":[],"st":[]},{"k":"village","r":null,"n":"Rüdesheim am Rhein","c":"Germany","s":41.3,"na":"Germany","nr":12,"cr":12,"q":[],"st":["9 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Trosa","c":"Sweden","s":40.5,"na":"Sweden","nr":10,"cr":10,"q":[],"st":["6 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Heusden","c":"Netherlands","s":40.3,"na":"the Netherlands","nr":9,"cr":9,"q":[],"st":["2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Grimentz","c":"Switzerland","s":39.2,"na":"Switzerland","nr":9,"cr":9,"q":[],"st":[]},{"k":"village","r":null,"n":"Veurne","c":"Belgium","s":38.9,"na":"Belgium","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Tønder","c":"Denmark","s":38.9,"na":"Denmark","nr":11,"cr":11,"q":[],"st":["9 independent cafés, bakeries and tea rooms within a short walk of the centre."]},{"k":"village","r":null,"n":"Guarda","c":"Switzerland","s":38.5,"na":"Switzerland","nr":10,"cr":10,"q":[],"st":[]},{"k":"village","r":null,"n":"Beynac-et-Cazenac","c":"France","s":37.9,"na":"France","nr":9,"cr":9,"q":[],"st":["Twice as many cafés, bakeries and tea rooms per person as the typical place in France in the study."]},{"k":"village","r":null,"n":"Torgny","c":"Belgium","s":37.0,"na":"Belgium","nr":9,"cr":9,"q":[],"st":[]},{"k":"village","r":null,"n":"Goslar","c":"Germany","s":36.9,"na":"Germany","nr":13,"cr":13,"q":[],"st":["15 independent cafés, bakeries and tea rooms within a short walk of the centre.","2 independent bookshops within a short walk of the centre."]},{"k":"village","r":null,"n":"Maria Wörth","c":"Austria","s":36.8,"na":"Austria","nr":11,"cr":11,"q":[],"st":[]},{"k":"village","r":null,"n":"Gimmelwald","c":"Switzerland","s":36.2,"na":"Switzerland","nr":11,"cr":11,"q":[],"st":[]},{"k":"village","r":null,"n":"Jokkmokk","c":"Sweden","s":35.7,"na":"Sweden","nr":11,"cr":11,"q":[],"st":[]},{"k":"village","r":null,"n":"Seiffen","c":"Germany","s":33.6,"na":"Germany","nr":14,"cr":14,"q":[],"st":[]},{"k":"village","r":null,"n":"Mölle","c":"Sweden","s":32.5,"na":"Sweden","nr":12,"cr":12,"q":[],"st":[]},{"k":"village","r":null,"n":"Hunspach","c":"France","s":31.1,"na":"France","nr":10,"cr":10,"q":[],"st":[]},{"k":"village","r":null,"n":"Skudeneshavn","c":"Norway","s":30.9,"na":"Norway","nr":8,"cr":8,"q":[],"st":[]},{"k":"village","r":null,"n":"Marken","c":"Netherlands","s":29.6,"na":"the Netherlands","nr":10,"cr":10,"q":[],"st":["More buildings on the national heritage register near the centre than 9 in 10 places in the Netherlands in the study.","3 in 10 of its reviews use words like cosy, charming or welcoming (or the local-language word)."]},{"k":"village","r":null,"n":"Pacentro","c":"Italy","s":29.5,"na":"Italy","nr":11,"cr":11,"q":[],"st":[]}];
+  var T = {"tabsLabel": "Choose state winners or all towns", "tabs": {"town": "State winners", "village": "All towns"}, "search": "Find a town", "title": {"town": "Europe's Cosiest Towns", "village": "Europe's Cosiest Towns"}, "sub": "Each country's winner, ranked. Pick a country for all its towns.", "results": "{n} matches", "none": "No places match that search.", "of": "of", "alsoScored": "Also scored", "rankLabel": "No. {r} UK {k}", "noun": {"town": "state winner", "village": "town"}, "outOf": "out of 100", "visitor": "One visitor wrote", "howScored": "See how it scored", "hideScored": "Hide the scoring", "rawNote": "", "searchTitle": "Search results", "result1": "1 match", "visitors": "What visitors wrote", "method": "How we scored: cosy reviews, cafés and tea rooms, fireplaces, places to stay, bookshops, historic buildings and press lists. Each country was scored on its own.", "nationLabel": "Choose a country", "areaLabel": "Choose an area", "allNations": "All countries", "allAreas": "All areas", "titleIn": {"town": "The Cosiest Towns in {p}", "village": "The Cosiest Towns in {p}"}, "winner": "Winner", "close": "Close", "embed": "Embed this chart", "download": "Download image", "embedHelp": "Copy this code and paste it into your page. It opens on the view you're looking at now.", "copy": "Copy code", "copied": "Embed code copied", "preparing": "Preparing image…", "downloaded": "Image downloaded", "dlFail": "Sorry, the image could not be made. Please try again.", "embedTitle": "Europe's cosiest towns – Liquidline", "shotSub": "Cosiness score out of 100", "inUK": "in Europe", "inK": {"town": "of the country winners", "village": "of the country winners"}, "sortLabel": "Sort the state winners", "sortRank": "Ranked", "sortAZ": "A to Z by state", "titleAZ": "The State Winners, A to Z", "regionLabels": {"the Netherlands": "Netherlands"}, "sub2": ""};
+  var az = false, kind = "town", page = 0, sel = null, query = "", per = 10, nation = "", area = "";
+  var $ = function(id){ return document.getElementById(id); };
+  var CFG = {"hDesk": 780, "hMob": 900, "studyUrl": "liquidline.co.uk/news/cosiest-towns/#europe", "source": "cosiest towns study, November 2026.", "regions": ["Austria", "Belgium", "Denmark", "France", "Germany", "Italy", "the Netherlands", "Norway", "Sweden", "Switzerland"], "searchKind": "village", "noArea": true, "filterKind": "", "sortKind": "", "single": true, "keepRegion": true, "regionKind": "village"};
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g,""); }
+  function items(){
+    if (!query) { var L = (CFG.regionKind && nation) ? D.filter(function(d){ return d.k === CFG.regionKind && d.na === nation; }) : D.filter(function(d){ return d.k === kind && (!nation || d.na === nation) && (!area || d.c === area); });
+      if (az && kind === CFG.sortKind) L = L.slice().sort(function(a, b){ return a.c.localeCompare(b.c) || a.n.localeCompare(b.n); });
+      return L; }
+    var q = norm(query);
+    return D.filter(function(d){ return (!CFG.searchKind || d.k === CFG.searchKind) && norm(d.n + " " + d.c).indexOf(q) > -1; });
+  }
+  function num(d){ if (CFG.regionKind) return (query || nation) ? d.nr : d.r; return (query || CFG.single) ? d.r : area ? d.cr : nation ? d.nr : d.r; }
+  function ord(n){ var s = ["th","st","nd","rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+  function rowHTML(d, i){
+    var n = num(d), win = n === 1 ? " win" : "";
+    return '<li><button type="button" class="row' + win + '" data-i="' + i + '"' + (sel === d ? ' aria-current="true"' : '') +
+       ' aria-label="' + esc((n ? n + ". " : "") + d.n + ", " + d.c + ". Score " + d.s.toFixed(1)) + '">' +
+      '<span class="rank">' + (n || "") + '</span>' +
+      '<span class="name"><strong>' + esc(d.n) + (n === 1 ? '<span class="tag">' + esc(T.winner) + '</span>' : '') + '</strong><span class="area">' + esc(d.c) + (query && !CFG.searchKind ? ' · ' + esc(T.noun[d.k]) : '') + '</span></span>' +
+      '<span class="track" aria-hidden="true"><span class="bar" style="width:' + d.s + '%"></span></span>' +
+      '<span class="score">' + d.s.toFixed(1) + '</span></button></li>';
+  }
+  function card(d){
+    if (!d) { $("card").innerHTML = ""; return; }
+    var bits = [];
+    var uk = d.r ? ord(d.r) + " " + ((T.inK && T.inK[d.k]) || T.inUK) : "", nat = d.nr ? ord(d.nr) + " in " + d.na : "", cty = d.cr ? ord(d.cr) + " in " + d.c : "";
+    if (area) bits = [cty, uk]; else if (nation) bits = [nat, uk]; else bits = [uk, cty];
+    bits = bits.filter(Boolean);
+    if (!bits.length) bits.push(d.c + ", " + d.na);
+    var h = '<button type="button" class="close" id="close" aria-label="' + esc(T.close) + '">\u00d7</button><p class="kicker">' + esc(bits.join(" · ")) + '</p>' +
+      '<h2>' + esc(d.n) + '</h2><p class="big"><b>' + d.s.toFixed(1) + '</b><span>' + esc(T.outOf) + '</span></p>';
+    if (d.q.length) h += '<div class="quotes">' + d.q.map(function(q){ return '<blockquote>\u201c' + esc(q) + '\u201d</blockquote>'; }).join("") +
+      '<p class="who">' + esc(d.q.length > 1 ? T.visitors : T.visitor) + '</p></div>';
+    if (d.st.length) h += '<ul class="stats">' + d.st.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>';
+    $("card").innerHTML = h;
+    $("close").onclick = closeCard;
+  }
+  function render(){
+    var all = items(), pages = Math.max(1, Math.ceil(all.length / per));
+    if (page >= pages) page = pages - 1;
+    var slice = all.slice(page * per, page * per + per);
+    $("title").textContent = query ? T.searchTitle : (area || nation) ? T.titleIn[kind].replace("{p}", area || nation) : (az && kind === CFG.sortKind && T.titleAZ) ? T.titleAZ : T.title[kind];
+    $("sub").textContent = query ? (all.length === 1 ? T.result1 : T.results.replace("{n}", all.length)) : T.sub;
+    var html = "", lastRanked = true;
+    slice.forEach(function(d, j){
+      lastRanked = !!num(d);
+      html += rowHTML(d, page * per + j);
+    });
+    $("list").innerHTML = html || '<li class="empty">' + esc(T.none) + '</li>';
+    var first = page * per + 1, last = page * per + slice.length;
+    $("pageinfo").textContent = all.length ? first + "–" + last + " " + T.of + " " + all.length : "";
+    $("prev").disabled = page === 0; $("next").disabled = page >= pages - 1;
+    Array.prototype.forEach.call(document.querySelectorAll(".row"), function(b){
+      b.onclick = function(){ var i = this.getAttribute("data-i"); sel = all[+i]; render(); card(sel); saveState(); openNear(document.querySelector('.row[data-i="' + i + '"]')); };
+    });
+  }
+  function fillAreas(){
+    var list = D.filter(function(d){ return d.k === kind && (!nation || d.na === nation); }).map(function(d){ return d.c; });
+    list = list.filter(function(c, i){ return list.indexOf(c) === i; }).sort();
+    if (list.indexOf(area) < 0) area = "";
+    $("area").innerHTML = '<option value="">' + esc(T.allAreas) + '</option>' + list.map(function(c){ return '<option' + (c === area ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join("");
+  }
+  (function(){
+    var ns = CFG.regions, lb = T.regionLabels || {};
+    $("nation").innerHTML = '<option value="">' + esc(T.allNations) + '</option>' + ns.map(function(n){ return '<option value="' + esc(n) + '">' + esc(lb[n] || n) + '</option>'; }).join("");
+  })();
+  function refilter(){ closeCard(); page = 0; $("q").value = ""; query = ""; var r = items(); sel = r[0] || null; render(); card(sel); saveState(); }
+  $("nation").onchange = function(){ nation = this.value; fillAreas(); refilter(); };
+  $("area").onchange = function(){ area = this.value; refilter(); };
+  function slug(s){ return norm(s).replace(/ +/g, "-"); }
+  function stateHash(){
+    var p = [];
+    if (kind !== "town") p.push("villages");
+    if (az && kind === CFG.sortKind) p.push("az");
+    if (nation) p.push("nation-" + slug(nation));
+    if (area) p.push("area-" + slug(area));
+    if (sel) p.push("place-" + slug(sel.n));
+    return p.join("--");
+  }
+  function saveState(){}
+  function readState(){
+    var h = (location.hash || "").replace("#", ""); if (!h) return;
+    h.split("--").forEach(function(t){
+      if (t === "villages") kind = "village";
+      if (t === "az") az = true;
+      if (t.indexOf("nation-") === 0) CFG.regions.forEach(function(n){ if (slug(n) === t.slice(7)) nation = n; });
+      if (t.indexOf("area-") === 0) D.forEach(function(d){ if (slug(d.c) === t.slice(5)) area = d.c; });
+      if (t.indexOf("place-") === 0) D.forEach(function(d){ if (slug(d.n) === t.slice(6) && (!sel || d.k === kind)) sel = d; });
+    });
+    if (sel) kind = sel.k;
+  }
+  function say(m){ $("status").textContent = m; setTimeout(function(){ if ($("status").textContent === m) $("status").textContent = ""; }, 4000); }
+  function pageUrl(){ return location.href.split("#")[0].split("?")[0]; }
+  function embedCode(){
+    var hgt = '<style>.ll-cosy{height:' + CFG.hDesk + 'px}@media(max-width:700px){.ll-cosy{height:' + CFG.hMob + 'px}}</style>\n';
+    return hgt + '<iframe class="ll-cosy" src="' + pageUrl() + "#" + stateHash() + '" title="' + T.embedTitle + '" width="100%" style="border:0;width:100%;" loading="lazy" scrolling="no"></iframe>\n' +
+      '<p style="font:12px Arial,sans-serif;color:#5f5b5b;">Source: ' + (CFG.studyUrl ? '<a href="https://' + CFG.studyUrl + '">Liquidline</a>' : 'Liquidline') + '</p>';
+  }
+  $("embedBtn").onclick = function(){ var b = $("embedBox"), o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o); if (o) { $("embedCode").value = embedCode(); $("embedCode").select(); } };
+  $("embedClose").onclick = function(){ $("embedBox").classList.remove("open"); $("embedBtn").setAttribute("aria-expanded", "false"); $("embedBtn").focus(); };
+  $("copyBtn").onclick = function(){
+    var t = $("embedCode"); t.select();
+    var ok = function(){ say(T.copied); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t.value).then(ok, function(){ document.execCommand("copy"); ok(); });
+    else { document.execCommand("copy"); ok(); }
+  };
+  function buildShot(){
+    var all = items().slice(0, 10), title = $("title").textContent;
+    var h = '<h1>' + esc(title) + '</h1><p class="sub">' + esc(T.shotSub) + '</p>';
+    all.forEach(function(d){ var n = num(d);
+      h += '<div class="srow' + (n === 1 ? ' win' : '') + '"><span class="rank">' + (n || "") + '</span><span class="name"><strong>' + esc(d.n) + '</strong><span class="area">' + esc(d.c) + '</span></span>' +
+        '<span class="track"><span class="bar" style="width:' + d.s + '%;' + (n === 1 ? 'background:#e30613' : '') + '"></span></span><span class="score">' + d.s.toFixed(1) + '</span></div>'; });
+    h += '<p class="sfoot">Source: <b>Liquidline</b>, ' + esc(CFG.source) + '<br>Full study: <b style="white-space:nowrap">' + esc(CFG.studyUrl) + '</b></p>';
+    $("shot").innerHTML = h; return title;
+  }
+  $("dlBtn").onclick = function(){
+    if (typeof html2canvas !== "function") { say(T.dlFail); return; }
+    var b = this; b.disabled = true; say(T.preparing);
+    var title = buildShot();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+      return html2canvas($("shot"), { scale: 2, backgroundColor: "#ffffff" });
+    }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(res, "image/png"); });
+    }).then(function(blob){
+      var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = "liquidline-" + slug(title) + ".png"; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000); b.disabled = false; say(T.downloaded);
+    }).catch(function(){ b.disabled = false; say(T.dlFail); });
+  };
+  var mobile = window.matchMedia("(max-width:700px)");
+  function closeCard(){ var c = $("card"); c.classList.remove("open"); var r = document.querySelector('.row[aria-current="true"]'); if (r && mobile.matches) r.focus(); }
+  function openNear(btn){
+    var c = $("card");
+    if (!mobile.matches) { c.classList.remove("open"); c.style.top = ""; return; }
+    c.classList.add("open");
+    var lay = document.querySelector(".layout"), top = btn.getBoundingClientRect().bottom - lay.getBoundingClientRect().top + 4;
+    var maxTop = Math.max(0, lay.offsetHeight - c.offsetHeight);
+    c.style.top = Math.min(top, maxTop) + "px";
+    $("close").focus();
+  }
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeCard(); });
+  function syncSeg(){ if (!CFG.sortKind) return; $("seg").classList.toggle("on", kind === CFG.sortKind); Array.prototype.forEach.call(document.querySelectorAll("#seg button"), function(b){ b.setAttribute("aria-pressed", (b.getAttribute("data-s") === "az") === az); }); }
+  function syncFilter(){ syncSeg(); if (!CFG.filterKind) return; var on = kind === CFG.filterKind; $("nation").style.display = on ? "" : "none"; if (!on && nation) { nation = ""; $("nation").value = ""; fillAreas(); } }
+  function setKind(k){
+    kind = k; syncFilter(); fillAreas(); setTimeout(saveState, 0);
+    kind = k; page = 0;
+    Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === k); });
+    sel = items()[0] || null; render(); card(sel);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.onclick = function(){ $("q").value = ""; query = ""; setKind(this.getAttribute("data-k")); }; });
+  $("prev").onclick = function(){ page--; closeCard(); render(); };
+  $("next").onclick = function(){ page++; closeCard(); render(); };
+  $("q").oninput = function(){ query = this.value.trim(); page = 0; var r = items(); if (r.length && r.indexOf(sel) < 0) { sel = r[0]; card(sel); } render(); };
+  if (CFG.noArea) { $("area").style.display = "none"; document.body.classList.add("noarea"); }
+  if (CFG.single) { document.querySelector(".top").style.justifyContent = "flex-start"; document.querySelector(".tabs").style.display = "none"; if (!CFG.keepRegion) $("nation").style.display = "none"; $("area").style.display = "none"; }
+  readState(); syncFilter();
+  Array.prototype.forEach.call(document.querySelectorAll("#seg button"), function(b){ b.onclick = function(){ az = this.getAttribute("data-s") === "az"; syncSeg(); closeCard(); page = 0; var r = items(); sel = r[0] || null; render(); card(sel); }; });
+  var want = sel;
+  document.body.classList.add("intro");
+  $("nation").value = nation; fillAreas(); $("area").value = area;
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-k") === kind); });
+  var list0 = items();
+  sel = want && list0.indexOf(want) > -1 ? want : (list0[0] || null);
+  if (sel) page = Math.floor(list0.indexOf(sel) / per);
+  render(); card(sel);
+  setTimeout(function(){ document.body.classList.remove("intro"); }, 900);
+})();
+</script>
+<div class="shot" id="shot" aria-hidden="true"></div>
+</body>
+</html>
