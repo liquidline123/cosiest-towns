@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>What visitors notice in cafés and hotels | Liquidline</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root { --red:#E30613; --black:#000604; --grey:#CAC7C7; --soft:#f6f6f6; --muted:#5f5b5b; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { position:relative; font-family:Poppins, Arial, sans-serif; color:var(--black); background:#fff; max-width:900px; margin:0 auto; padding:clamp(16px,3vw,32px); -webkit-font-smoothing:antialiased; }
+  #chart { background:#fff; }
+  h1 { font-size:clamp(22px,2.6vw,29px); font-weight:700; line-height:1.18; letter-spacing:-.025em; }
+  .sub { font-size:13px; line-height:1.55; margin:7px 0 20px; opacity:.78; max-width:68ch; }
+  .rows { list-style:none; border-top:1px solid var(--grey); }
+  .row { display:grid; grid-template-columns:minmax(150px,38%) 1fr 52px; align-items:center; column-gap:14px; padding:12px 4px; border-bottom:1px solid var(--grey); min-height:56px; }
+  .label strong { display:block; font-size:14.5px; font-weight:500; line-height:1.3; }
+  .label span { display:block; font-size:11.5px; color:var(--muted); line-height:1.35; margin-top:2px; }
+  .track { height:10px; background:var(--grey); border-radius:2px; }
+  .bar { display:block; height:100%; background:var(--black); border-radius:2px; }
+  .lead .bar { background:var(--red); }
+  .lead .label strong { color:var(--red); font-weight:700; }
+  .val { font-size:15px; font-weight:700; text-align:right; font-variant-numeric:tabular-nums; }
+  .intro .bar { animation:grow .7s ease-out both; }
+  @keyframes grow { from { width:0; } }
+  @media (prefers-reduced-motion: reduce) { .intro .bar { animation:none; } }
+  .foot { font-size:12px; color:var(--muted); line-height:1.65; margin-top:14px; }
+  .foot b { color:var(--black); font-weight:500; }
+  .foot a { color:inherit; }
+  .brand { margin-top:16px; } .brand img { display:block; width:200px; height:auto; }
+  .tools { display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+  .tools button { font:500 13px Poppins, Arial, sans-serif; border:1px solid var(--black); background:#fff; border-radius:999px; padding:6px 14px; cursor:pointer; color:var(--black); }
+  .tools button:hover { background:var(--soft); }
+  .tools button:focus-visible { outline:2px solid #C51315; outline-offset:3px; }
+  .status { font-size:12px; color:var(--muted); align-self:center; }
+  .embed { display:none; position:absolute; left:16px; right:16px; bottom:16px; z-index:5; box-shadow:0 10px 30px rgba(0,0,0,.18); background:#fff; border:1px solid var(--grey); border-radius:12px; padding:16px; }
+  .embed.open { display:block; }
+  .embed p { font-size:13px; margin-bottom:8px; }
+  .embed textarea { width:100%; height:110px; font:12px/1.4 ui-monospace, Menlo, Consolas, monospace; border:1px solid var(--grey); border-radius:8px; padding:8px; resize:none; }
+  .embed .row2 { display:flex; gap:12px; margin-top:8px; }
+  .embed .row2 button { font:500 13px Poppins, Arial, sans-serif; background:none; border:0; border-bottom:1px solid var(--black); padding:0 0 1px; cursor:pointer; color:var(--black); }
+  @media (max-width:600px) {
+    .row { grid-template-columns:1fr 46px; row-gap:7px; }
+    .label { grid-column:1 / -1; }
+    .track { grid-column:1; }
+  }
+</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div id="chart">
+  <h1 id="title"></h1>
+  <p class="sub" id="sub"></p>
+  <ol class="rows" id="rows"></ol>
+  <p class="foot" id="note"></p>
+  <p class="foot" id="source"></p>
+  <div class="brand"><a id="logoLink" rel="noopener" target="_blank"><img alt="Liquidline" src="liquidline-logo.png" width="200" height="22"/></a></div>
+</div>
+<div class="tools"><button aria-expanded="false" id="embedBtn" type="button">Embed this chart</button><button id="dlBtn" type="button">Download image</button><span class="status" id="status" role="status"></span></div>
+<div aria-label="Embed this chart" class="embed" id="embedBox" role="dialog"><p>Copy this code and paste it into your page.</p><textarea id="embedCode" readonly></textarea>
+<div class="row2"><button id="copyBtn" type="button">Copy code</button><button id="embedClose" type="button">Close</button></div></div>
+<noscript><p class="foot">Turn on JavaScript to see this chart.</p></noscript>
+<script>
+(function(){
+  /* Study page */
+  var S = { url:"liquidline.co.uk/news/cosiest-towns/", source:"cosiest towns and villages study, November 2026." };
+
+  /* Chart */
+  var key = "uk-cafes";
+  var C = { h:[450,620],
+      title:"Garden Centre Cafés: The People, Not the Room",
+      sub:"Share of 96 recent Tripadvisor reviews of UK garden centre cafés that praised each.",
+      note:"Reviews written November 2024 to November 2026 at garden centre cafés in England, Scotland, Wales and Northern Ireland, read in November 2026.",
+      rows:[ ["The staff and service","Friendly staff, attentive service, a warm welcome",31],
+             ["The room itself","Seating, décor, views, warmth, cleanliness",11] ] };
+
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+
+  document.title = C.title + " | Liquidline";
+  $("title").textContent = C.title;
+  $("sub").textContent = C.sub;
+  $("note").textContent = C.note;
+  $("source").innerHTML = 'Source: <a href="https://' + S.url + '" rel="noopener" target="_blank"><b>Liquidline</b></a>, ' + esc(S.source) +
+    ' Full study: <a href="https://' + S.url + '" rel="noopener" target="_blank" style="white-space:nowrap">' + esc(S.url) + '</a>';
+  $("logoLink").href = "https://" + S.url;
+  $("rows").innerHTML = C.rows.map(function(r, i){
+    return '<li class="row' + (i === 0 ? ' lead' : '') + '" aria-label="' + esc(r[0] + ": " + r[2] + "% of reviews") + '">' +
+      '<span class="label"><strong>' + esc(r[0]) + '</strong>' + (r[1] ? '<span>' + esc(r[1]) + '</span>' : '') + '</span>' +
+      '<span class="track" aria-hidden="true"><span class="bar" style="width:' + r[2] + '%"></span></span>' +
+      '<span class="val">' + r[2] + '%</span></li>';
+  }).join("");
+  document.body.classList.add("intro");
+  setTimeout(function(){ document.body.classList.remove("intro"); }, 900);
+
+  function say(m){ $("status").textContent = m; setTimeout(function(){ if ($("status").textContent === m) $("status").textContent = ""; }, 4000); }
+  function pageUrl(){ return location.href.split("#")[0].split("?")[0]; }
+  function embedCode(){
+    return '<style>.ll-' + key + '{height:' + C.h[0] + 'px}@media(max-width:600px){.ll-' + key + '{height:' + C.h[1] + 'px}}</style>\n' +
+      '<iframe class="ll-' + key + '" src="' + pageUrl() + '" title="' + esc(C.title) + ' – Liquidline" width="100%" style="border:0;width:100%;" loading="lazy" scrolling="no"></iframe>\n' +
+      '<p style="font:12px Arial,sans-serif;color:#5f5b5b;">Source: <a href="https://' + S.url + '">Liquidline</a></p>';
+  }
+  $("embedBtn").onclick = function(){ var b = $("embedBox"), o = b.classList.toggle("open"); this.setAttribute("aria-expanded", o); if (o) { $("embedCode").value = embedCode(); $("embedCode").select(); } };
+  $("embedClose").onclick = function(){ $("embedBox").classList.remove("open"); $("embedBtn").setAttribute("aria-expanded", "false"); $("embedBtn").focus(); };
+  $("copyBtn").onclick = function(){
+    var t = $("embedCode"); t.select();
+    var ok = function(){ say("Embed code copied"); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t.value).then(ok, function(){ document.execCommand("copy"); ok(); });
+    else { document.execCommand("copy"); ok(); }
+  };
+  $("dlBtn").onclick = function(){
+    if (typeof html2canvas !== "function") { say("Sorry, the image could not be made. Please try again."); return; }
+    var b = this; b.disabled = true; say("Preparing image…");
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function(){
+      return html2canvas($("chart"), { scale:2, backgroundColor:"#ffffff" });
+    }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(res, "image/png"); });
+    }).then(function(blob){
+      var a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = "liquidline-" + key + ".png"; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000); b.disabled = false; say("Image downloaded");
+    }).catch(function(){ b.disabled = false; say("Sorry, the image could not be made. Please try again."); });
+  };
+})();
+</script>
+</body>
+</html>
