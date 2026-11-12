@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-IE">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -64,17 +64,17 @@
 <noscript><p class="foot">Turn on JavaScript to see this chart.</p></noscript>
 <script>
 (function(){
-  /* Study page */
-  var S = { url:"liquidline.co.uk/news/cosiest-towns/", source:"cosiest towns and villages study, November 2026." };
+  /* Study page. CHECK this Irish link before publishing. */
+  var S = { url:"liquidline.ie/news/cosiest-towns/", source:"cosiest towns and villages study, November 2026." };
 
   /* Chart */
-  var key = "uk-hotels";
+  var key = "ie-hotels";
   var C = { h:[630,790],
       title:"What Hotel Guests Mentioned Most",
-      sub:"Share of 96 recent Tripadvisor reviews from guests at UK independent hotels, inns and boutique hotels.",
+      sub:"Share of 96 recent Tripadvisor reviews from guests at Irish independent, family-run hotels.",
       note:"Reviews written November 2024 to November 2026, read in November 2026. Only reviews from guests who stayed are counted. A review can mention more than one thing.",
-      rows:[ ["A comfortable room","",56], ["Friendly staff","",42], ["Attentive care and personal touches","",34],
-             ["Character and a cosy feel","",31], ["Clean and well kept","",23] ] };
+      rows:[ ["Friendly staff","",54], ["Attentive care and personal touches","",47], ["A comfortable room","",46],
+             ["Views and gardens","",29], ["Character and a cosy feel","",28] ] };
 
   var $ = function(id){ return document.getElementById(id); };
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
